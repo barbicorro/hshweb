@@ -22,7 +22,7 @@ class ResidencesController < ApplicationController
 
   def update
     @residence = Residence.find(params[:id])
-    if @residence.update(params.require(:residence).permit(:title,:address,:description,:location_id))
+    if @residence.update(params.require(:residence).permit(:title,:address,:description,:country,:province,:locality))
        redirect_to residences_path , notice: "La residencia fue modificada exitosamente"
      else
        render :edit
@@ -30,7 +30,7 @@ class ResidencesController < ApplicationController
   end
 
   def create
-    @residence =Residence.new(params.require(:residence).permit(:title,:address,:description,:location_id))
+    @residence =Residence.new(params.require(:residence).permit(:title,:address,:description,:country,:province,:locality))
      if @residence.save
        redirect_to residences_path , notice: "La residencia fue publicada exitosamente"
      else
