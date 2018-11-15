@@ -1,0 +1,32 @@
+<div class="container-fluid bg-dark pb-4">
+	<div class="text-center"> 
+			<h2 class="text-white mb-3"><%=@residence.title%></h2>
+		</div>
+	<div class="row">
+
+		<img src="https://www.foot.com/wp-content/uploads/2017/03/placeholder.gif" class="col-10 offset-1" height="350px">
+
+		<div class="card text-white bg-dark col-4 mt-3" >
+		  <div class="card-header text-center bg-primary"><h5>Direccion</h5></div>
+		  <div class="card-body">
+		    	<ul class="card-text text-justify">
+		    		<li><%=@residence.address%></li>
+		    		<li><%=@residence.location.country%></li>
+		    		<li><%=@residence.location.province%></li>
+		    		<li><%=@residence.location.locality%></li>
+		    	</ul>
+		  </div>
+		</div>
+
+		<div class="card text-white bg-dark col-8 mt-3" >
+		  <div class="card-header text-center bg-primary"><h5>Descripción</h5></div>
+		  <div class="card-body">
+		    <p class="card-text text-justify">
+		    	<%=@residence.description%>
+		    </p>
+		  </div>
+		</div>
+
+		<button class="btn btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", residences_path%></button>
+	</div>	
+</div> 
