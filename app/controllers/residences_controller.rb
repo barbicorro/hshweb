@@ -3,6 +3,9 @@ class ResidencesController < ApplicationController
     @residences = Residence.all
   end
 
+  def home
+    @residences = Residence.all
+  end
 
   def new
     @residence = Residence.new
