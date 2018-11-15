@@ -32,9 +32,9 @@ class ResidencesController < ApplicationController
   def create
     @residence =Residence.new(params.require(:residence).permit(:title,:address,:description,:country,:province,:locality))
      if @residence.save
-       redirect_to residences_path , notice: "La residencia fue publicada exitosamente"
+       redirect_to residences_path , notice: 'La residencia fue publicada exitosamente'
      else
-       render :new
+        render :new 
      end
    end
    

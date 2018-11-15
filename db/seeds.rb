@@ -2,18 +2,6 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
-#
-#locations = Location.create([{ country: 'Argentina', province: 'Buenos Aires', locality: 'La Plata' },
-#{ country: 'Argentina', province: 'Buenos Aires', locality: 'Berazategui' }])
-#residences = Residence.create([{ title: 'Holtel 1',  }, { title: 'Hotel 2' }])
-
-
-
-
-# Residence.create(title: 'Hotel 3', location: movies.first)
-location1= Location.create({country: 'Argentina', province: 'San Luis', locality:'Villa Mercedes'})
-location2= Location.create({country: 'Argentina', province: 'Neuquen', locality:'Villa La Angostura'})
-location3= Location.create({country: 'Argentina', province: 'Tierra del Fuego', locality:'Ushuaia'})
 
 
 resi1= Residence.create({title: 'Hotel 1', address: 'calle 150 n1992',description:'hotel 5 estrellas',
