@@ -1,6 +1,7 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
+<<<<<<< HEAD
 # Examples:
 #
 #locations = Location.create([{ country: 'Argentina', province: 'Buenos Aires', locality: 'La Plata' },
@@ -30,3 +31,14 @@ sale1=Sale.create({fechaInicio:"2019/05/03 19:00", precioBase: "5000",fechaFin:"
 sale2=Sale.create({fechaInicio:"2019/08/23 15:00", precioBase: "5000",fechaFin:"2019/08/26 15:00", week_id: "3" })
 sale1=Sale.create({fechaInicio:"2019/11/17 17:00", precioBase: "7000",fechaFin:"2019/11/20 17:00", week_id: "1" })
 sale1=Sale.create({fechaInicio:"2019/12/15 12:00", precioBase: "5000",fechaFin:"2019/12/18 12:00", week_id: "4" })
+=======
+
+
+resi1= Residence.create({title: 'Hotel 1', address: 'calle 150 n1992',description:'hotel 5 estrellas',
+	country:'Argentina', province:'Neuquen', locality:'Villa La Angostura', image: ' https://i.pinimg.com/originals/d1/24/11/d124114c0f8b03734018bf1716a0db3b.jpg'})
+resi2= Residence.create({title: 'Hotel 2', address: 'calle 14 n899',description:'hotel con pileta',
+	country:'Argentina', province:'Tierra del Fuego', locality:'Usuahia', image:' https://q-ec.bstatic.com/images/hotel/max1024x768/468/46871800.jpg'})
+resi3= Residence.create({title: 'Hotel 3', address: 'calle 156 n192', 
+	description:'hotel con vista a las montañas',country:'Argentina', province:'San Luis', locality:'Villa Mercedes',image: 'https://www.hotelsofgreece.com/athens/electra-palace-hotel-pool.jpg'})
+
+>>>>>>> 088faa4ec070901d9bc2d3ce9c81ae27dc5470a8

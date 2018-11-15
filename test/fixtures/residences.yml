@@ -3,11 +3,17 @@
 one:
   title: MyString
   description: MyString
-  location: one
   address: MyString
+  country: MyString
+  province: MyString
+  locality: MyString
+  image: MyString
 
 two:
   title: MyString
   description: MyString
-  location: two
   address: MyString
+  country: MyString
+  province: MyString
+  locality: MyString
+  image: MyString
