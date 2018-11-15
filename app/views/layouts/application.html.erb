@@ -9,6 +9,27 @@
   </head>
 
   <body>
+  	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <%= link_to image_tag("HSH-Logo.svg",height: '32'), residences_path %>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item active">
+	        <%= link_to "Home", residences_path, class: "nav-link"%>
+	      </li>
+	      <li class="nav-item">
+	        <%= link_to "Residencias", residences_path, class: "nav-link"%>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link disabled" href="#">Subasta</a>
+	      </li>
+	    </ul>
+	  </div>
+      <%= image_tag("HSH-Text.svg",height: '32')%>
+	</nav>
     <%= yield %>
   </body>
 </html>
