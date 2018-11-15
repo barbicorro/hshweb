@@ -3,8 +3,10 @@ class CreateResidences < ActiveRecord::Migration[5.1]
     create_table :residences do |t|
       t.string :title
       t.string :description
-      t.references :location, foreign_key: true
       t.string :address
+      t.string :country
+      t.string :province
+      t.string :locality
 
       t.timestamps
     end

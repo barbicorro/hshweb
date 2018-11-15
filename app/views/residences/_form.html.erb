@@ -2,35 +2,38 @@
 	<%= form_for @residence do |f| %>
 		
 		<div class "form-group">
-			<h5><%= f.label :title, "Titulo", class: 'text-white mb-1 '%></h5>
+			<h5><%= f.label :title, "Título", class: 'text-white mb-1 '%></h5>
 			<%= f.text_field :title, class: 'form-control mb-3', placeholder: "Ingrese un titulo para la residencia",
 			required: true %>
 
-			<h5><%= f.label :address, "Direccion", class: 'text-white mb-1 '%></h5>
+			<h5><%= f.label :address, "Dirección", class: 'text-white mb-1 '%></h5>
 			<%= f.text_field :address, class: 'form-control mb-3', placeholder: "Ingrese la direccion de la residencia",
 			required: true %>
 
-			<h5><%= f.label :description, "Descripcion", class: 'text-white mb-1 '%></h5>
+			<h5><%= f.label :description, "Descripción", class: 'text-white mb-1 '%></h5>
 			<%= f.text_area :description, class: 'form-control mb-3', placeholder: "Ingrese una descripcion de la residencia",required: true %>
 		</div>
 
 		<div class="form-group row">
 			<div class="col-4">	
 			<h5><%= f.label :country ,"País",class: 'text-white mb-1'%></h5>  
-			<%=f.collection_select :location_id,Location.all, :id, :country,{}, class:'form-control mb-3' %>
+			<%=f.text_field :country, class: 'form-control mb-3', placeholder: "Ingrese el pais de la residencia",
+			required: true %>
 			</div>
 			<div class="col-4">
 			<h5><%= f.label :province ,"Provincia",class: 'text-white mb-1'%></h5>
-			<%=f.collection_select :location_id,Location.all, :id, :province,{}, class:'form-control mb-3' %>
+			<%=f.text_field :province, class: 'form-control mb-3', placeholder: "Ingrese la  provincia de la residencia",
+			required: true  %>
 			</div>
 			<div class="col-4">
 				<h5><%= f.label :locality,"Localidad",class: 'text-white mb-1'%></h5>
-				<%=f.collection_select :location_id,Location.all, :id, :locality,{}, class:'form-control mb-3' %>
+				<%=f.text_field :locality, class: 'form-control mb-3', placeholder: "Ingrese la localidad de la residencia",
+			required: true  %>
 			</div>
 		</div>
 		<div class="offset-10">
-			<%= f.submit "Publicar", class: 'btn btn-primary btn-sm' %> 
-			<%= link_to "Cancelar", residences_path,class: 'btn btn-outline-primary btn-sm' %>
+			<%= f.submit "Publicar", class: 'btn btn-primary btn' %> 
+			<%= link_to "Cancelar", residences_path,class: 'btn btn-outline-primary btn' %>
 		</div>
 	<%end%>
 	<br><br>
