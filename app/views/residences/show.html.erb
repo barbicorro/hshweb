@@ -4,16 +4,17 @@
 		</div>
 		<div class="row">
 
-		<img src="https://avatars.mds.yandex.net/get-pdb/51720/e4c24fc8-b4f2-49fd-8896-523ff050527d/orig" class="style_image col-10 offset-1" height="400px">
+		<img src="<%=@residence.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-8 offset-2" height="470px" width="300 px">
+		
 
 		<div class="card text-white bg-dark col-4 mt-3" >
-		  <div class="card-header text-center bg-primary"><h5>Dirección</h5></div>
+		  <div class="card-header text-center bg-primary"><h5>Ubicación</h5></div>
 		  <div class="card-body">
 		    	<ul class="card-text text-justify">
-		    		<li><%=@residence.address%></li>
-		    		<li><%=@residence.country%></li>
-		    		<li><%=@residence.province%></li>
-		    		<li><%=@residence.locality%></li>
+		    		<li>Dirección: <%=@residence.address%></li>
+		    		<li>País: <%=@residence.country%></li>
+		    		<li>Provincia: <%=@residence.province%></li>
+		    		<li>Localidad: <%=@residence.locality%></li>
 		    	</ul>
 		  </div>
 		</div>

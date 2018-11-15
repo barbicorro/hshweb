@@ -7,6 +7,7 @@ class CreateResidences < ActiveRecord::Migration[5.1]
       t.string :country
       t.string :province
       t.string :locality
+      t.string :image
 
       t.timestamps
     end

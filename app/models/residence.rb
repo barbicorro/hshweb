@@ -1,6 +1,10 @@
 class Residence < ApplicationRecord
 	default_scope -> { order("title") }
 	has_many :weeks
-	validates	:description, length:{minimum:0,maximum:1500}
 	validates :title, presence:true, uniqueness:true
+	validates :address, presence:true
+	validates :image, presence:true
+	validates :country, presence:true
+	validates :province, presence:true
+	validates :locality, presence:true
 end
