@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fechaInicio: 2018-11-15 18:23:42
+  precioBase: 1.5
+  precioPuja: 1.5
+  fechaFin: 2018-11-15 18:23:42
+  week: one
+
+two:
+  fechaInicio: 2018-11-15 18:23:42
+  precioBase: 1.5
+  precioPuja: 1.5
+  fechaFin: 2018-11-15 18:23:42
+  week: two
