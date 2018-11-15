@@ -10,10 +10,6 @@
 
 
 
-# Residence.create(title: 'Hotel 3', location: movies.first)
-location1= Location.create({country: 'Argentina', province: 'San Luis', locality:'Villa Mercedes'})
-location2= Location.create({country: 'Argentina', province: 'Neuquen', locality:'Villa La Angostura'})
-location3= Location.create({country: 'Argentina', province: 'Tierra del Fuego', locality:'Ushuaia'})
 
 
 resi1= Residence.create({title: 'Hotel 1', address: 'calle 150 n1992',description:'hotel 5 estrellas',
