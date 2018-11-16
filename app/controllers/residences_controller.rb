@@ -39,7 +39,7 @@ class ResidencesController < ApplicationController
    end
    
 	def destroy
-	  residence = Residence.find(params[:id])
+	  @residence = Residence.find(params[:id])
     if @residence.destroy
       redirect_to residences_path,notice: "La residencia se elimino exitosamente"
     else 
