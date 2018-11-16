@@ -1,0 +1,22 @@
+<div class="container mb-5">
+		<%= simple_form_for @sale do |f| %>
+
+				<h5><%= f.label "Fecha de Inicio", class: 'text-white mb-1 '%></h5>
+				<h5 class="offset-7"><%= f.label "Hora de inicio", class: 'text-white mb-1 '%></h5>
+
+			<div class="mb-5">
+				<%= f.input :fechaInicio, as: :datetime, label:false %>
+			</div>
+
+				<h5><%= f.label "Fecha de fin", class: 'text-white mb-1 '%></h5>
+				<h5 class="offset-7"><%= f.label "Hora de fin", class: 'text-white mb-1 '%></h5>
+
+  			<div class="mb-5">
+  				<%= f.input :fechaFin, as: :datetime, label: false %>
+  			</div>
+  			<div class="offset-11">
+  				<%= f.button :submit, 'Publicar subasta' %>
+  			</div>
+		<% end %>
+</div>	
+<br><br>

@@ -34,16 +34,16 @@ class ResidencesController < ApplicationController
      if @residence.save
        redirect_to residences_path , notice: 'La residencia fue publicada exitosamente'
      else
-        render :new 
+        redirect_to new_residences_path , notice: 'La residencia ya existe'
      end
    end
    
 	def destroy
 	  residence = Residence.find(params[:id])
-    if residence.destroy
+    if @residence.destroy
       redirect_to residences_path,notice: "La residencia se elimino exitosamente"
     else 
-            redirect_to residences_path,notice: "Error al eliminar la residencia"
+      redirect_to residences_path,notice: "Error al eliminar la residencia"
     end
 
 	end

@@ -2,19 +2,5 @@
 	<div class="text-center"> 
 	      <h2 class="text-white mb-3">Nueva subasta</h2>
 	</div>
-	<div class="container mb-5">
-		<%= simple_form_for @sale do |f| %>
-			<h5><%= f.label :title, "Fecha de inicio", class: 'text-white mb-1 '%></h5>
-			<%= f.input :fechaInicio, as: :datetime %>
-  			<%= f.input :fechaFin, as: :datetime %>
-  			<%= f.button :submit %>
-			<% end %>
-			
-
-			<!--<div class "form-group">
-				<h5 class="text-white mb-1"> Fecha inicio </h5>
-				<input type="text" class="form-control mb-3"  placeholder="Ingrese la fecha de inicio">
-				 -->
-	</div>	
-
+	<%= render 'form'%>
 </div>
