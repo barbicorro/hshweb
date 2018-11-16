@@ -4,9 +4,9 @@
 	</div>
 	<div class="container mb-5">
 		<%= simple_form_for @sale do |f| %>
-			<h5><%= f.label :title, "Fecha de inicio", class: 'text-white mb-1 '%></h5>
-			<%= f.input :fechaInicio, as: :datetime %>
-  			<%= f.input :fechaFin, as: :datetime %>
+			<h5><%= f.label :title, "Fijar fecha y hora", class: 'text-white mb-1 '%></h5>
+			<%= f.input :fechaInicio, as: :datetime,start_year: Datetime.now.year,label: 'Fecha y hora de Inicio' %>
+  			<%= f.input :fechaFin, as: :datetime ,label: 'Fecha y hora de Finalización'%>
   			<%= f.button :submit %>
 			<% end %>
 			

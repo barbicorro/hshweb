@@ -58,3 +58,9 @@ gem 'jquery-rails'
 #gem 'jquery-ui-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'simple_form'
+
+
+group :development do
+ gem 'pry-rails'
+ gem 'awesome_print'
+end
