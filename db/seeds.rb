@@ -9,12 +9,6 @@
 #{ country: 'Argentina', province: 'Buenos Aires', locality: 'Berazategui' }])
 
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 5e5b3d0431526de41a243154e33de60611657ef5
-
 #Week.create(status:string, residence_id:"")
 week1= Week.create({status: 'reservada', residence_id: "1"})
 week2= Week.create({status: 'enHotSale', residence_id: "2"})
@@ -26,10 +20,7 @@ sale1=Sale.create({fechaInicio:"2019/05/03 19:00", precioBase: "5000",fechaFin:"
 sale2=Sale.create({fechaInicio:"2019/08/23 15:00", precioBase: "5000",fechaFin:"2019/08/26 15:00", week_id: "3" })
 sale1=Sale.create({fechaInicio:"2019/11/17 17:00", precioBase: "7000",fechaFin:"2019/11/20 17:00", week_id: "1" })
 sale1=Sale.create({fechaInicio:"2019/12/15 12:00", precioBase: "5000",fechaFin:"2019/12/18 12:00", week_id: "4" })
-<<<<<<< HEAD
 
-=======
->>>>>>> 5e5b3d0431526de41a243154e33de60611657ef5
 
 
 resi1= Residence.create({title: 'Hotel 1', address: 'calle 150 n1992',description:'hotel 5 estrellas',
