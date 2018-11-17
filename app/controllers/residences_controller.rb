@@ -34,7 +34,7 @@ class ResidencesController < ApplicationController
      if @residence.save
        redirect_to residences_path , notice: 'La residencia fue publicada exitosamente'
      else
-        redirect_to new_residences_path , notice: 'La residencia ya existe'
+        redirect_to new_residence_path , notice: 'La residencia ya existe'
      end
    end
    
