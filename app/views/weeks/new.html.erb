@@ -1,0 +1,9 @@
+<h2>Añadir semana:</h2>
+<%= form_for([@residence, @residence.weeks.build]) do |f| %>
+  <p>
+    <%= f.label :status %><br>
+    <%= f.text_field :status %>
+  </p>
+    <%= f.submit 'Guardar semana' %>
+  </p>
+<% end %>
