@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181115212342) do
+ActiveRecord::Schema.define(version: 20181118200100) do
 
   create_table "residences", force: :cascade do |t|
     t.string "title"
@@ -35,12 +35,18 @@ ActiveRecord::Schema.define(version: 20181115212342) do
     t.index ["week_id"], name: "index_sales_on_week_id"
   end
 
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "weeks", force: :cascade do |t|
-    t.string "status"
+    t.date "period"
+    t.integer "status_id"
     t.integer "residence_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["residence_id"], name: "index_weeks_on_residence_id"
   end
 
 end

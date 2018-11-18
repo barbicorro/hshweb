@@ -1,9 +1,22 @@
-<h2>Añadir semana:</h2>
-<%= form_for([@residence, @residence.weeks.build]) do |f| %>
-  <p>
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </p>
-    <%= f.submit 'Guardar semana' %>
-  </p>
-<% end %>
+<div class="container-fluid bg-dark pb-4">
+	<div class="text-center"> 
+	      <h2 class="text-white mb-3">Configurar semanas de la residencia: <%= Residence.find(@week.residence_id).title %></h2>
+	</div>
+	<div class="container mb-5">
+
+		<%= form_for ([@residence, @residence.weeks.build]) do |f| %>
+
+		<div class="col-3">
+			<h5><%= f.label :period,"Semana",class: 'text-white mb-1'%></h5>
+			<%=f.date_select :period, {}, class: 'form-control mb-3', required: true  %>
+		</div>
+
+		<div class="col-4">
+			<h5><%= f.label :status_id,"Semana",class: 'text-white mb-1'%></h5>
+			<%=f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control mb-3', required: true  %>
+		</div>
+
+		<%= f.submit "Guardar", class: 'btn btn-primary btn' %> 
+		<%end%>
+	</div>
+</div>
