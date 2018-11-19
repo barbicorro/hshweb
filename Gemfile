@@ -65,3 +65,6 @@ group :development do
  gem 'pry-rails'
  gem 'awesome_print'
 end
+
+gem 'bootstrap-datepicker-rails'
+

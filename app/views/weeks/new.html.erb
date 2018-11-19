@@ -5,18 +5,26 @@
 	<div class="container mb-5">
 
 		<%= form_for ([@residence, @residence.weeks.build]) do |f| %>
-
-		<div class="col-3">
-			<h5><%= f.label :period,"Semana",class: 'text-white mb-1'%></h5>
-			<%=f.date_select :period, {}, class: 'form-control mb-3', required: true  %>
-		</div>
-
-		<div class="col-4">
-			<h5><%= f.label :status_id,"Semana",class: 'text-white mb-1'%></h5>
-			<%=f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control mb-3', required: true  %>
-		</div>
-
-		<%= f.submit "Guardar", class: 'btn btn-primary btn' %> 
+			<div id="sandbox-container">
+				<%= f.text_field :period, "data-provide" => 'datepicker' %>
+			</div>
+			<script type="text/javascript">
+				$('#sandbox-container input').datepicker({
+    				startDate: '+7m',
+    				endDate: '+8m',
+				    language: "es",
+				    orientation: "bottom left",
+				    calendarWeeks: true
+				});
+			</script>
+			<!--<h5><%= f.label :period,"Semana",class: 'text-white mb-1'%></h5>
+				<%=f.date_select :period, {}, class: 'form-control col-2 row mb-3', required: true  %>
+			-->
+			<div class="col-4">
+				<h5><%= f.label :status_id,"Estado",class: 'text-white mb-1'%></h5>
+				<%=f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control mb-3', required: true  %>
+			</div>
+			<%= f.submit "Guardar", class: 'btn btn-primary btn' %> 
 		<%end%>
 	</div>
 </div>

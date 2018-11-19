@@ -34,7 +34,7 @@
 		    <p class="card-text text-justify">
 		    	<%@residence.weeks.each do |week|%>
 			    	<p>
-			    		<strong>Estado:</strong>
+			    		<strong>Estado de la semana <%= week.period%></strong>
 			    		<%= Status.find(week.status_id).name %>
 			    	</p>
 		    	<%end%>
