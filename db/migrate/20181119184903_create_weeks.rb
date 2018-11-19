@@ -4,6 +4,7 @@ class CreateWeeks < ActiveRecord::Migration[5.1]
       t.date :period
       t.integer :status_id
       t.integer :residence_id
+      t.integer :sale_id
 
       t.timestamps
     end

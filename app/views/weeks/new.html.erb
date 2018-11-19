@@ -6,7 +6,7 @@
 
 		<%= form_for ([@residence, @residence.weeks.build]) do |f| %>
 			<div id="sandbox-container">
-				<%= f.text_field :period, "data-provide" => 'datepicker' %>
+				<%= f.text_field :period, "data-provide" => 'datepicker',required: true %>
 			</div>
 			<script type="text/javascript">
 				$('#sandbox-container input').datepicker({
@@ -14,12 +14,10 @@
     				endDate: '+8m',
 				    language: "es",
 				    orientation: "bottom left",
-				    calendarWeeks: true
+				    calendarWeeks: true,
+				    autoclose: true
 				});
 			</script>
-			<!--<h5><%= f.label :period,"Semana",class: 'text-white mb-1'%></h5>
-				<%=f.date_select :period, {}, class: 'form-control col-2 row mb-3', required: true  %>
-			-->
 			<div class="col-4">
 				<h5><%= f.label :status_id,"Estado",class: 'text-white mb-1'%></h5>
 				<%=f.collection_select :status_id, Status.all, :id, :name, {}, class: 'form-control mb-3', required: true  %>

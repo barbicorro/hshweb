@@ -1,30 +1,13 @@
 class SalesController < ApplicationController
-	def new
-    	@sale = Sale.new
+
+  def new
+    @residence = Residence.find(params[:residence_id])  
+    @sale = @residence.sales.new
   end
 
-  	def edit
-    	@sale = Sale.find(params[:id])
-  	end
-
-	def update
-    	@sale = Sale.find(params[:id])
-    	if @sales.update(params.require(:sale).permit(:fechaInicio, :fechaFin))
-       		redirect_to sales_path , notice: "La subasta fue modificada exitosamente"
-     	else
-            render :edit
-     end
- end
-
   def create
-    @sale =Sale.new(params.require(:sale).permit(:fechaInicio,:fechaFin))
-     if @sale.save
-
-       redirect_to root_path , notice: "La subasta fue publicada exitosamente"
-
-      else
-       render :new
-     end
-   end
+    @residence = Residence.find(params[:residence_id])
+    @sale = @residence.sales.create(params.require(:sale).permit(:fechaInicio,:horaInicio,:precioBase,:week_id))
+    redirect_to residence_path(@residence)
+  end
 end
-

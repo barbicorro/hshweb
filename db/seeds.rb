@@ -28,14 +28,3 @@ week3= Week.create({period: "2019-06-14", status_id: "4", residence_id: "3"})
 week4= Week.create({period: "2019-07-15", status_id: "3", residence_id: "2"})
 week5= Week.create({period: "2019-12-20", status_id: "2", residence_id: "2"})
 week6= Week.create({period: "2019-01-27", status_id: "1", residence_id: "1"})
-
-#Sale.create(fechaInicio:datetime, precioBase:float, week_id:"")
-
-sale1=Sale.create({fechaInicio:"2019/05/03 19:00", precioBase: "5000",fechaFin:"2019/05/06 19:00", week_id: "2" })
-sale2=Sale.create({fechaInicio:"2019/08/23 15:00", precioBase: "5000",fechaFin:"2019/08/26 15:00", week_id: "3" })
-sale1=Sale.create({fechaInicio:"2019/11/17 17:00", precioBase: "7000",fechaFin:"2019/11/20 17:00", week_id: "1" })
-
-
-
-
-

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :residences do
     	resources :weeks
     end
-    resources :sales
 
+    resources :residences do
+    	resources :sales
+    end    
 end
