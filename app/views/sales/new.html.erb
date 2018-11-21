@@ -9,16 +9,15 @@
 			<h5><%= f.label :fechaInicio, "Fecha inicio", class: 'text-white mt-3 mb-1 '%></h5>
 			<div class="mb-5" id="sandbox-container">
 				<%= f.text_field :fechaInicio, "data-provide" => 'datepicker',required: true %>
-				<!-- ACA HAY QUE CREAR LA SEMANA -->
 			</div>
 			<script type="text/javascript">
 				$('#sandbox-container input').datepicker({
-    				startDate: '+7m',
+    				startDate: 'today',
     				endDate: '+8m',
 				    language: "es",
 				    orientation: "bottom left",
 				    calendarWeeks: true,
-				    autoclose: true
+				    autoclose: true,
 				});
 			</script>
 			<h5><%= f.label :horaInicio, "Hora inicio", class: 'text-white mb-1 mt-2 '%></h5>

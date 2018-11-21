@@ -16,15 +16,8 @@ resi3= Residence.create({title: 'Hotel 3', address: 'calle 156 n192',
 
 
 #Status.create(name:string)
-status1=Status.create({name: 'SinEspecificar'})
+status1=Status.create({name: 'enEspera'})
 status2=Status.create({name: 'EnSubasta'})
 status3=Status.create({name: 'Reservada'})
 status4=Status.create({name: 'EnHotSale'})
 
-#Week.create(period:date, status_id:integer, residence_id:integer)
-week1= Week.create({period: "2019-02-22", status_id: "1", residence_id: "1"})
-week2= Week.create({period: "2019-03-12", status_id: "2", residence_id: "2"})
-week3= Week.create({period: "2019-06-14", status_id: "4", residence_id: "3"})
-week4= Week.create({period: "2019-07-15", status_id: "3", residence_id: "2"})
-week5= Week.create({period: "2019-12-20", status_id: "2", residence_id: "2"})
-week6= Week.create({period: "2019-01-27", status_id: "1", residence_id: "1"})
