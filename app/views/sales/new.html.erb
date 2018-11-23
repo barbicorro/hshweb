@@ -1,31 +1,33 @@
 <div class="container-fluid bg-dark pb-4">
 	<div class="text-center"> 
-	      <h2 class="text-white mb-3"> Crear subasta para la residencia: 
-	      	<%= Residence.find(@sale.residence_id).title %>
-	      </h2>
+	      <h3 class="text-white mb-3"> Fijar fecha y hora de comienzo de la subasta para la residencia: 
+	      	<%= Residence.find((Week.find(params[:week_id])).residence_id).title %>
+	      en la semana:
+	      	<%= Week.find(params[:week_id]).period %>
+	      </h3>
 	</div>
 	<div class="container mb-5">
-		<%= form_for ([@residence, @residence.sales.build]) do |f| %>
+		<%= form_for [@week, @week.build_sale] do |f| %>
 			<h5><%= f.label :fechaInicio, "Fecha inicio", class: 'text-white mt-3 mb-1 '%></h5>
 			<div class="mb-5" id="sandbox-container">
 				<%= f.text_field :fechaInicio, "data-provide" => 'datepicker',required: true %>
 			</div>
 			<script type="text/javascript">
 				$('#sandbox-container input').datepicker({
-    				startDate: 'today',
-    				endDate: '+8m',
+					startDate: 'today',
 				    language: "es",
 				    orientation: "bottom left",
 				    calendarWeeks: true,
-				    autoclose: true,
+				    autoclose: true
 				});
 			</script>
+			<!-- endDate: FALTA ESTE -->
 			<h5><%= f.label :horaInicio, "Hora inicio", class: 'text-white mb-1 mt-2 '%></h5>
 				<%= f.time_select :horaInicio, {:default => {:hour => '0', :minute => '0'}}, class: 'form-control time-select col-3 mb-5', required: true  %>
 
 			<h5><%= f.label :precioBase, "Establecer precio base de la subasta", class: 'text-white mb-1 mt-2 '%></h5>
 				<%= f.number_field :precioBase, class: 'form-control time-select col-3 mb-5', min: "0", required: true  %>
-			<br><br>
+<br><br>
 			<%= f.submit "Guardar", class: 'btn btn-primary col-1' %> 
 		<%end%>
 	</div>
