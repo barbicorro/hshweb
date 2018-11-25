@@ -9,6 +9,8 @@
   </head>
   
   <body>
+  		
+
   	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	  <%= link_to image_tag("HSH-Logo.svg",height: '32'), root_path %>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,11 +25,26 @@
 	      <li class="nav-item">
 	        <%= link_to "Residencias", residences_path, class: "nav-link"%>
 	      </li>
-
+			 <li class="nav-item">
+	        <%= link_to "Usuarios", usuarios_path, class: "nav-link"%>
+	      </li>
 	    </ul>
 	  </div>
       <%= image_tag("HSH-Text.svg",height: '32')%>
+     
+       <div class="navbar-text pull-right">
+
+		<% if user_signed_in? %>
+		  Logged in as <strong><%= current_user.email %></strong>.
+		  <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+		  <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+		<% else %>
+		  <%= link_to "Registrarme", new_user_registration_path, :class => 'navbar-link'  %> |
+		  <%= link_to "Iniciar sesión", new_user_session_path, :class => 'navbar-link'  %>
+		<% end %>
+</div>
 	</nav>
+    
     <%= yield %>
   </body>
 </html>

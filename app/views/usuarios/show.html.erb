@@ -1,0 +1,44 @@
+<div class="container-fluid bg-dark pb-4">
+	<div class="text-center"> 
+	<div class="bg-dark"><br /></div>
+	
+			<h2 class="text-white mb-3"><%= "Perfil de #{@usuario.name}"%></h2>
+		<div class="bg-dark"><br /></div>
+
+		<div class="row offset-2">
+		
+			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 " height="450px" width="300 px">
+			<div class="bg-dark"> <p></p>  </div>
+			<div class="bg-dark"> <p></p>  </div>
+
+			<div class="card text-white bg-dark col-5 offset-1" >
+			  <div class="card-header text-center bg-primary"><h5> Datos personales </h5></div>
+			  <div class="card-body">
+			    	<ul class="card-text text-justify">
+			    		<li>Nombre: <%=@usuario.name%></li>
+			    		<li>Apellido: <%=@usuario.lastname%></li>
+			    		
+			    		<li>Fecha de nacimiento: <%=@usuario.date_of_birth%></li>
+			    	</ul>
+		  		</div>
+			
+
+		<div class="card-header text-center bg-primary"><h5> Datos de tarjeta</h5></div>
+		  <div class="card-body">
+		    	<ul class="card-text text-justify">
+		    		<li>Marca: <%=@usuario.card_Marca%></li>
+		    		<li>Numero: <%=@usuario.card_Number%></li>
+		    		<li>Codigo: <%=@usuario.cod%></li>
+		    
+		    	</ul>
+		  </div>
+
+
+
+
+		</div>
+		</div>
+
+		<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", usuarios_path%></button>
+	</div>	
+</div> 
