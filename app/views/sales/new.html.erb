@@ -13,20 +13,20 @@
 				<%= f.text_field :fechaInicio, "data-provide" => 'datepicker',required: true %>
 			</div>
 			<script type="text/javascript">
-				$('#sandbox-container input').datepicker({
+				$('#sandbox-container input').datepicker(
 					startDate: 'today',
+					endDate: # ACA IRIA LA FECHA MENOS 3 DIAS,
 				    language: "es",
 				    orientation: "bottom left",
 				    calendarWeeks: true,
 				    autoclose: true
 				});
 			</script>
-			<!-- endDate: FALTA ESTE -->
 			<h5><%= f.label :horaInicio, "Hora inicio", class: 'text-white mb-1 mt-2 '%></h5>
 				<%= f.time_select :horaInicio, {:default => {:hour => '0', :minute => '0'}}, class: 'form-control time-select col-3 mb-5', required: true  %>
 
 			<h5><%= f.label :precioBase, "Establecer precio base de la subasta", class: 'text-white mb-1 mt-2 '%></h5>
-				<%= f.number_field :precioBase, class: 'form-control time-select col-3 mb-5', min: "0", required: true  %>
+				<%= f.number_field :precioBase, class: 'form-control col-3 mb-5', min: "0", required: true  %>
 <br><br>
 			<%= f.submit "Guardar", class: 'btn btn-primary col-1' %> 
 		<%end%>
