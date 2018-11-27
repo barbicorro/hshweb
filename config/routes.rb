@@ -10,9 +10,7 @@ Rails.application.routes.draw do
     		resource :sales	    		
 
     end  
-    resources :sales 
 
-    end    
     resources :usuarios
 
 end

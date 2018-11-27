@@ -18,14 +18,21 @@
         </tr>
       </thead>
       <tbody>
-        <% @sales.each do |sale| %>
+        <% @residence.weeks.each do |week| %>
           <tr>
-            <td> <%= Residencia.find(sale.residence_id).title%> </td>
-            <td><%= Semana.find(sale.week_id).period %> </td>
-            <td><%= sale.precioBase %> </td>
-            <td><%= sale.fechaInicio %> </td>
-            <td><%= link_to "Iniciar", updateStatus_sale_path(sale), class: 'btn btn-info btn-primary'%> </td>
+          <% if week.sale != nil %>
+            <td> <%= Residence.find(week.residence_id).title%> </td>
+            <td><%= week.period %> </td>
+            <td><%= week.sale.precioBase %> </td>
+            <td><%= week.sale.fechaInicio %> </td>
+            
+            <!-- EL LINK DE LA LINEA DE ABAJO NO ANDA, CAMBIARLO -->
+            <td><%= link_to "Iniciar", "/weeks", method: :put, class: 'btn btn-info btn-primary'%> </td>
+          <% end %>
           </tr>
           <% end %>
         </tbody>
       </table>
+  </div>
+  <br><br><br>
+</div>
