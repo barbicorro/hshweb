@@ -1,0 +1,31 @@
+<div class="container-fluid bg-dark pb-4">
+  <div class="text-center"> 
+      <h2 class="text-white mb-3">Subastas</h2>
+      <div class="alert text-white mb-3 alert-expand-lg bg-dark"> 
+      <%= notice%>
+      </div>
+  </div>
+  <div class="row">
+    <table style="table", class="table table-dark">
+      <thead>
+        <tr>
+          <th width "80%"> Residencia</th>
+          <th width "80%"> Semana</th>
+          <th width "80%"> Precio Base</th>
+          <th width "80%"> Fecha de Inicio</th>
+
+          <th colspan="4"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @sales.each do |sale| %>
+          <tr>
+            <td> <%= Residencia.find(sale.residence_id).title%> </td>
+            <td><%= Semana.find(sale.week_id).period %> </td>
+            <td><%= sale.precioBase %> </td>
+            <td><%= sale.fechaInicio %> </td>
+            <td><%= link_to "Iniciar", updateStatus_sale_path(sale), class: 'btn btn-info btn-primary'%> </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
