@@ -18,6 +18,6 @@ class WeeksController < ApplicationController
 	end
 
 	def index
-		@residence = Residence.find(params[:residence_id])	
+		@residences = Residence.all
 	end
 end

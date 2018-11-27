@@ -18,7 +18,8 @@
         </tr>
       </thead>
       <tbody>
-        <% @residence.weeks.each do |week| %>
+      <% @residences.each do |residence| %>
+        <% residence.weeks.each do |week| %>
           <tr>
           <% if week.sale != nil %>
             <td> <%= Residence.find(week.residence_id).title%> </td>
@@ -31,6 +32,7 @@
           <% end %>
           </tr>
           <% end %>
+        <% end %>
         </tbody>
       </table>
   </div>
