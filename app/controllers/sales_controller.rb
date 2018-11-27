@@ -2,8 +2,18 @@ class SalesController < ApplicationController
 
   def create
     @week = Week.find(params[:week_id])
-    @sale = @week.sales.create(params.require(:sale).permit(:fechaInicio,:horaInicio,:precioBase))
-    redirect_to root
+    @sale = @week.build_sale(params.require(:sale).permit(:fechaInicio,:horaInicio,:precioBase))
+    @sale.fechaFin = @sale.fechaInicio + 3
+    @sale.precioPuja = @sale.precioBase
+    @sale.week_id = params[:week_id]
+    @sale.residence_id = Residence.find(@week.residence_id).id
+    if @sale.save
+        @week.sale_id = @sale.id
+        @week.save
+        redirect_to residences_path , notice: 'La subasta fue configurada exitosamente'
+    else
+      render :new
+    end
   end
 
   def new

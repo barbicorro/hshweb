@@ -1,21 +1,21 @@
 <div class="container-fluid bg-dark pb-4">
 	<div class="text-center"> 
 	      <h3 class="text-white mb-3"> Fijar fecha y hora de comienzo de la subasta para la residencia: 
-	      	<%= Residence.find((Week.find(params[:week_id])).residence_id).title %>
+	      	<%= Residence.find(@week.residence_id).title %>
 	      en la semana:
-	      	<%= Week.find(params[:week_id]).period %>
+	      	<%= @week.period %>
 	      </h3>
 	</div>
 	<div class="container mb-5">
-		<%= form_for [@week, @week.build_sale] do |f| %>
+		<%= form_for [@week,@sale] do |f| %>
 			<h5><%= f.label :fechaInicio, "Fecha inicio", class: 'text-white mt-3 mb-1 '%></h5>
 			<div class="mb-5" id="sandbox-container">
-				<%= f.text_field :fechaInicio, "data-provide" => 'datepicker',required: true %>
+				<%= f.text_field :fechaInicio, "data-provide" => 'datepicker', class: 'form-control col-2', required: true %>
 			</div>
 			<script type="text/javascript">
-				$('#sandbox-container input').datepicker(
-					startDate: 'today',
-					endDate: # ACA IRIA LA FECHA MENOS 3 DIAS,
+				$('#sandbox-container input').datepicker({
+				    startDate: "today",
+				    endDate: "<%= (@week.period -= 3).strftime('%d/%m/%Y')%>",
 				    language: "es",
 				    orientation: "bottom left",
 				    calendarWeeks: true,
