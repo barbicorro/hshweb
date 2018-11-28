@@ -11,6 +11,8 @@
           <th width "80%"> Semana</th>
           <th width "80%"> Precio Base</th>
           <th width "80%"> Fecha de Inicio</th>
+          <th width "80%"> Fecha de Fin</th>
+          <th width "80%"> Acciones </th>
           <th colspan="4"> </th>
         </tr>
       </thead>
@@ -20,9 +22,10 @@
             <tr>
             <% if (week.sale != nil) && ((week.sale.fechaInicio == Date.today) || (week.sale.fechaFin == Date.today)) %>
               <td> <%= Residence.find(week.residence_id).title%> </td>
-              <td><%= week.period %> </td>
+              <td><%= week.period.strftime('%d/%m/%Y') %> </td>
               <td><%= week.sale.precioBase %> </td>
               <td><%= week.sale.fechaInicio %> </td>
+              <td><%= week.sale.fechaFin %> </td>
               <% if (week.status_id != 2) && (week.sale.fechaInicio == Date.today)%>
                   <td><%= link_to "Iniciar", edit_week_path(week), class: 'btn btn-primary'%> </td>
               <% elsif (week.status_id == 2) && (week.sale.fechaFin == Date.today)%>

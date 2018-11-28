@@ -1,0 +1,33 @@
+<div class="container-fluid bg-dark pb-4">
+  <div class="text-center"> 
+    <h2 class="text-white mb-3"> Semanas de la residencia: <%= Residence.find(params[:residence_id]).title %> </h2>
+    <div class="alert text-white mb-3 alert-expand-lg bg-dark"><%= notice%></div>
+  </div>
+  <div class="row">
+    <table  class="table table-dark">
+      <thead>
+        <tr>
+          <th> Semana </th>
+          <th> Estado </th>
+          <th> Acciones </th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @residence.weeks.each do |week| %>
+            <tr>
+              <td><%= week.period.strftime('%d/%m/%Y') %> </td>
+              <td><%= Status.find(week.status_id).name %> </td>
+              <% if (week.status_id == 1) && (week.sale == nil) %>
+                  <td><%= link_to "Iniciar", edit_week_path(week), class: 'btn btn-primary'%> </td>
+              <% elsif (week.status_id == 1) && (week.sale != nil) %>
+                  <td> Ya configurada </td>
+              <%elsif (week.status_id == 2) && ((week.sale.fechaFin >= Date.today) || (week.sale.fechaInicio <= Date.today))%>
+                    <td><%= link_to "Ver subasta", edit_week_sales_path(week), class: 'btn btn-primary'%></td>
+              <% end %>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", :back %></button>
+</div>

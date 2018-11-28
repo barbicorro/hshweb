@@ -20,7 +20,7 @@ class WeeksController < ApplicationController
 	end
 
 	def index
-		@residences = Residence.all
+		@residence = Residence.find(params[:residence_id])
 	end
 
 	def edit
