@@ -51,7 +51,9 @@ ActiveRecord::Schema.define(version: 20181123232343) do
     t.string "card_Number"
     t.string "card_Marca"
     t.integer "cod"
-    t.datetime "date_of_birth"
+    t.integer "age"
+    t.date "date_of_birth"
+    t.date "date_venc"
     t.string "image"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

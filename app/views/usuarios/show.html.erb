@@ -7,7 +7,7 @@
 
 		<div class="row offset-2">
 		
-			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 " height="450px" width="300 px">
+			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 " height="450px" width="400 px">
 			<div class="bg-dark"> <p></p>  </div>
 			<div class="bg-dark"> <p></p>  </div>
 
@@ -17,7 +17,7 @@
 			    	<ul class="card-text text-justify">
 			    		<li>Nombre: <%=@usuario.name%></li>
 			    		<li>Apellido: <%=@usuario.lastname%></li>
-			    		
+			    		<li>Edad: <%=@usuario.age%></li>
 			    		<li>Fecha de nacimiento: <%=@usuario.date_of_birth%></li>
 			    	</ul>
 		  		</div>
@@ -29,7 +29,8 @@
 		    		<li>Marca: <%=@usuario.card_Marca%></li>
 		    		<li>Numero: <%=@usuario.card_Number%></li>
 		    		<li>Codigo: <%=@usuario.cod%></li>
-		    
+		    		<li>Fecha de vencimiento: <%=@usuario.date_venc%></li>
+			    		
 		    	</ul>
 		  </div>
 
@@ -38,7 +39,7 @@
 
 		</div>
 		</div>
-
+		<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Editar perfil", edit_user_registration_path%></button>
 		<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", usuarios_path%></button>
 	</div>	
 </div> 

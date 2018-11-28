@@ -30,13 +30,14 @@
 	      </li>
 	    </ul>
 	  </div>
+	  
       <%= image_tag("HSH-Text.svg",height: '32')%>
      
        <div class="navbar-text pull-right">
 
 		<% if user_signed_in? %>
-		  Logged in as <strong><%= current_user.email %></strong>.
-		  <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
+		  Logged in as <strong><%= current_user.email %></strong>
+		  <%= link_to 'Mi perfil', usuario_path(current_user), :class => 'navbar-link' %> |
 		  <%= link_to "Cerrar sesión", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
 		<% else %>
 		  <%= link_to "Registrarme", new_user_registration_path, :class => 'navbar-link'  %> |
