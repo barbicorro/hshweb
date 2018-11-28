@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     end
     resources :weeks do 
     		resource :sales	    		
-    end    
+
+    end  
+
     resources :usuarios
+
 end
