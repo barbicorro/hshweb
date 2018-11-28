@@ -1,8 +1,8 @@
 <div class="container-fluid bg-dark pb-4">
- 
-          <h2 class="text-white text-center mb-3">Registro</h2>
-          <div class="alert text-white mb-3 alert-expand-lg bg-dark"><%= devise_error_messages! %>  </div>
+ <div class="alert text-white mb-3 alert-expand-lg bg-dark"><%= devise_error_messages! %>  </div>
 _    
+          <h2 class="text-white text-center mb-3">Registro</h2>
+          
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     
 
@@ -15,18 +15,18 @@ _
                 <div><%= f.label :name, "Nombre"%> 
                 <%= f.text_field :name,class: 'form-control mb-3', required: true%> </div>
               </div>
-             <div class="col-2"> 
+             <div class="col-3"> 
                 <div><%= f.label :lastname, "Apellido"%> 
                 <%= f.text_field :lastname, class: 'form-control mb-3',required: true%> </div>
               </div>
           </div>
           <div class="row">
-            <div class="col-1"> 
+            <div class="col-2"> 
               <div><%= f.label :age, "Edad"%> </div>
               <%=f.number_field :age, class: 'form-control mb-3',min: "18",autofocus:true, required:true %>
             </div>
 
-            <div class="col-2"> 
+            <div class="col-3"> 
               <div><%= f.label :date_of_birth, "Fecha de nacimiento"%></div>
               <div id="sandbox-container">
                 <%= f.text_field :date_of_birth, "data-provide" => 'datepicker', class: 'form-control mb-3', required: true %>
@@ -43,24 +43,38 @@ _
               </script>
             </div>
           </div>
-
-            <div class="col-4 row"> 
+            <div class="row">
+            <div class="col-3"> 
              <%= f.label :image ,"URL de la imagen",class: 'text-white mb-1'%>  
               <%= f.url_field :image, class: 'form-control mb-3', placeholder: "Ingrese el link de su foto ", required: true %></div>
-            <div class="col-4 row"> 
+              
+               <div class="col-3"> 
+             <%= f.label :type ,"Tipo de usuario",class: 'text-white mb-1'%>  
+              
+              <input type="text" readonly class="form-control-plaintext text-white" id="type" value="Usuario Base">
+
+              </div>
+            </div>
+            <div class="row">
+            <div class="col-5"> 
             <%= f.input :email,
                         required: true,
                         autofocus: true ,
                         input_html: { autocomplete: "Correo electronico" }%></div>
-            <div class="col-4 row"> 
+            </div>
+            <div class="row">
+            <div class="col-5">  
             <%= f.input :password,
                         required: true,
                         hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
                         input_html: { autocomplete: "Nueva contraseña" } %></div>
-            <div class="col-4 row"> 
+                        </div>
+             <div class="row">
+            <div class="col-5">  
             <%= f.input :password_confirmation,
                         required: true,
                         input_html: { autocomplete: "Confirme su contraseña" } %></div>
+          </div>
           </div>
       
       <h4>Datos de su tarjeta </h4> 
@@ -96,10 +110,7 @@ _
                 </script>
                </div>
             </div>
-          </div>
-          <br><br><br>
-</div>
-
+          
       <div class="form-actions">
         <%= f.button :submit, "Guardar" %>
       </div>

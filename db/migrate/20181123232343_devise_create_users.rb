@@ -11,7 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.integer :age
       t.date :date_of_birth
       t.date :date_venc
-     
+      t.integer :type, default: 3
       t.string :image
 
       ## Database authenticatable

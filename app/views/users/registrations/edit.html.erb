@@ -12,26 +12,30 @@
       
             <div class="col-2 ">
                 <div><%= f.label :name, "Nombre"%> 
-                <%= f.text_field :name,class: 'form-control mb-3', required: true%> </div>
+                  <input type="text" readonly class="form-control-plaintext text-white" id="name" value="<%=current_user.name%>">
+                </div>
+
+               
             </div>
       
            <div class="col-3"> 
                 <div><%= f.label :lastname, "Apellido"%> 
-                <%= f.text_field :lastname, class: 'form-control mb-3',required: true%> </div>
-              </div>
-      
+                <input type="text" readonly class="form-control-plaintext text-white" id="lastname" value="<%=current_user.lastname%>">              </div>
+          </div>
             <div class="col-2"> 
                 <div><%= f.label :age, "Edad"%> </div>
-                <%=f.text_field :age,class: 'form-control mb-3',autofocus:true, required:true %>
-            </div>
+                <input type="text" readonly class="form-control-plaintext text-white" id="age" value="<%=current_user.age%>"></div>
+            
             <div class="col-3"> 
             
             <h5><%= f.label :date_of_birth, "Fecha de nacimiento"%></h5>
-            <%=f.date_select :date_of_birth, required:true %>
+            <input type="text" readonly class="form-control-plaintext text-white" id="date_of_birth" value="<%=current_user.date_of_birth%>">
             </div>
 
+            </div>
            
-           
+           <div class="form-group row">
+        
             <div class="col-6"> 
                  <%= f.label :image ,"URL de la imagen",class: 'text-white mb-1'%>  
                 <%= f.url_field :image, class: 'form-control mb-3', placeholder: "Ingrese el link de su foto ", required: true %>
@@ -80,7 +84,8 @@
                 </div>
                <div class="col-3">     
                   <h5><%= f.label :date_venc, "Fecha de vencimiento"%></h5>
-                   <%=f.date_select :date_venc, required:true %>
+                <div id="sandbox-container2">
+                <%= f.text_field :date_venc, "data-provide" => 'datepicker', class: 'form-control mb-3', required: true %>
               </div>
 
         </div>

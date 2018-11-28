@@ -14,6 +14,11 @@ resi2= Residence.create({title: 'Hotel 2', address: 'calle 14 n899',description:
 resi3= Residence.create({title: 'Hotel 3', address: 'calle 156 n192', 
 	description:'hotel con vista a las montañas',country:'Argentina', province:'San Luis', locality:'Villa Mercedes',image: 'https://www.hotelsofgreece.com/athens/electra-palace-hotel-pool.jpg'})
 
+type1=UserType.create({name:'Usuario Administrador'})
+type2=UserType.create({name:'Usuario Premium'})
+type3=UserType.create({name:'Usuario base'})
+
+
 
 #Status.create(name:string)
 status1=Status.create({name: 'enEspera'})
