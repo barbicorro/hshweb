@@ -7,9 +7,11 @@ class WeeksController < ApplicationController
 
 	def update
 		@week= Week.find(params[:id])
-		@week.update(params.require(:week).permit(:status_id))
-		@week.save
-		redirect_to edit_week_sales_path
+		if @week.update(params.require(:week).permit(:status_id))
+	       redirect_to edit_week_sales_path(@week) , notice: "La subasta ha iniciado"
+	     else
+	       redirect_to weeks_path , notice: "Ha habido algún problema con la inicialización de la subasta"
+	     end
 	end
 	
 	def new
@@ -19,5 +21,9 @@ class WeeksController < ApplicationController
 
 	def index
 		@residences = Residence.all
+	end
+
+	def edit
+		@week= Week.find(params[:id])
 	end
 end

@@ -18,7 +18,7 @@
       <tbody>
         <% @usuarios.each do |usuario| %>
           <tr>
-            <td> <%= link_to usuario.name, usuario_path(usuario)%> </td>
+            <td> <%= usuario.name %> </td>
             <td><%= usuario.email %> </td>
            
           </tr>
@@ -29,3 +29,5 @@
   <button class="btn btn-block btn-light col-4 offset-4 mt-3"> <%= link_to "Volver", usuarios_path %>
 </button>
 </div>
+
+            

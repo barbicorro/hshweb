@@ -21,15 +21,19 @@
       <% @residences.each do |residence| %>
         <% residence.weeks.each do |week| %>
           <tr>
-          <% if week.sale != nil %>
+          <% if (week.sale != nil) && (week.sale.fechaInicio == Date.today) && (week.status_id != 2)%>
             <td> <%= Residence.find(week.residence_id).title%> </td>
             <td><%= week.period %> </td>
             <td><%= week.sale.precioBase %> </td>
             <td><%= week.sale.fechaInicio %> </td>
+
             
             
             <td><%= link_to "Iniciar", "/weeks", method: :put, class: 'btn btn-info btn-primary'%> </td>
            
+
+            <td><%= link_to "Iniciar", edit_week_path(week), class: 'btn btn-primary'%> </td>
+
           <% end %>
           </tr>
           <% end %>
