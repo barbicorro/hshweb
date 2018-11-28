@@ -51,4 +51,10 @@ class SalesController < ApplicationController
     end
   end
 
+  def delete
+    @sale = Sale.find(params[:id])
+    @sale.destroy
+
+  end
+
 end
