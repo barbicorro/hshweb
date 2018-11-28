@@ -5,6 +5,14 @@ es:
     attributes:
       user:
         name: Nombre
+        lasname: Apellido
+        cod: Codigo
+        card_Number: Numero de tarjeta
+        date_of_birth: Fecha de nacimiento
+        date_venc: Fecha de vencimiento
+        age: Edad
+        card_Marca: Marca de la tarjeta
+        image: Imagen
         confirmation_sent_at: Confirmación enviada a
         confirmation_token: Código de confirmación
         confirmed_at: Confirmado en
