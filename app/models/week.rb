@@ -4,4 +4,5 @@ class Week < ApplicationRecord
 	validates :period, presence:true
     validates :status_id, presence:true
     validates :residence_id, presence:true
+    has_one :user
 end
