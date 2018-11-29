@@ -18,11 +18,13 @@
               <td><%= Residence.find(week.residence_id).title %></td>
               <td><%= week.period.strftime('%d/%m/%Y') %></td>
 
-              <% if (week.status_id == 1)  %> 
-                <td><%= link_to "Inscribirse a subasta", new_inscription_path, class: 'btn btn-primary'%> </td>
-              <% elsif (week.status_id == 3) %>
-                <td> Reservada </td>
-              <%end%>
+              <% if (user_signed_in?)  %>
+                  <% if (week.status_id == 1)  %>
+                    <td><%= link_to "Inscribirse a subasta", new_inscription_path(week), class: 'btn btn-primary'%> </td>
+                 <% elsif (week.status_id == 3) %>
+                     <td> Reservada </td>
+                 <%end%>
+                <%end%>
             </tr>
           <% end %>
       </tbody>
