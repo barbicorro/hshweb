@@ -1,5 +1,5 @@
 <div class="container-fluid bg-dark pb-4">
-  <div class="text-center"> 
+  <div class="text-center">
     <h2 class="text-white mb-3"> Residencias disponibles </h2>
     <div class="alert text-white mb-3 alert-expand-lg bg-dark"><%= notice%></div>
   </div>
@@ -19,7 +19,7 @@
               <td><%= week.period.strftime('%d/%m/%Y') %></td>
               <% if (user_signed_in?)  %>
                   <% if (week.status_id == 1)  %>
-                    <td><%= link_to "Inscribirse a subasta", new_inscription_path(week), class: 'btn btn-primary'%> </td>
+                    <td><%= link_to "Inscribirse a subasta", new_week_inscriptions_path(week), class: 'btn btn-primary'%> </td>
                  <% elsif (week.status_id == 3) %>
                      <td> Reservada </td>
                  <%end%>

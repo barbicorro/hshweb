@@ -6,17 +6,19 @@ Rails.application.routes.draw do
     resources :residences do
     	resources :weeks
     end
-    
-    resources :weeks do 
-    		resource :sales	    		
-    end  
 
-    resources :users do 
-            resource :sales             
-    end 
+    resources :weeks do
+    		resource :sales
+    end
 
+    resources :users do
+            resource :sales
+    end
+    resources :weeks do
+            resource :inscriptions
+    end
     resources :sales, only: [:index]
-    resources :inscriptions
+  
     get 'weekList', to: 'weeks#weekList', as: :weekList
 
     resources :usuarios
