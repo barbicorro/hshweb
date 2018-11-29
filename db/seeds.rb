@@ -25,8 +25,3 @@ status1=Status.create({name: 'enEspera'})
 status2=Status.create({name: 'EnSubasta'})
 status3=Status.create({name: 'Reservada'})
 status4=Status.create({name: 'EnHotSale'})
-
-#@sale = @week.sales.create(params.require(:sale).permit(:fechaInicio,:horaInicio,:precioBase))
-sale1=Sale.create ({fechaInicio:'2019/5/24',horaInicio:'00:00',precioBase:'1500'})
-sale2=Sale.create ({fechaInicio:'2019/3/17',horaInicio:'00:00',precioBase:'2100'})
-sale3=Sale.create ({fechaInicio:'2019/6/25',horaInicio:'00:00',precioBase:'1800'})

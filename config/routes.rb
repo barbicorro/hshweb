@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
     resources :sales, only: [:index]
 
+    get 'weekList', to: 'weeks#weekList', as: :weekList
+
     resources :usuarios
 
 end
