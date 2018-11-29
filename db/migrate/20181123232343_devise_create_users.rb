@@ -14,6 +14,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.integer :user_type_id, null: false, default: 3
       t.string :image
       t.integer :credits
+      t.integer :week1_id
+      t.integer :week2_id
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

@@ -5,7 +5,7 @@ class CreateWeeks < ActiveRecord::Migration[5.1]
       t.integer :status_id
       t.integer :residence_id
       t.integer :sale_id
-      #falta lista de usuarios asociados (personas que se inscriben)
+      t.integer :user_id
       t.timestamps
     end
   end
