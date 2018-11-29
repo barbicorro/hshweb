@@ -6,10 +6,14 @@ Rails.application.routes.draw do
     resources :residences do
     	resources :weeks
     end
+    
     resources :weeks do 
     		resource :sales	    		
-
     end  
+
+    resources :users do 
+            resource :sales             
+    end 
 
     resources :sales, only: [:index]
 

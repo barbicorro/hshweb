@@ -7,5 +7,7 @@ def index
   def show
     @usuario = User.find(params[:id])
   end
-
+  def idex_my_sale
+  	
+  end
 end
