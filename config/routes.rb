@@ -18,6 +18,7 @@ Rails.application.routes.draw do
             resource :inscriptions
     end
     resources :sales, only: [:index]
+    resources :inscriptions, only: [:index]
   
     get 'weekList', to: 'weeks#weekList', as: :weekList
 

@@ -1,8 +1,10 @@
 <h3 class="text-white mb-3">¿Seguro que quiere inscribirse a la subasta ?</h3>
 
-		<%= form_for [@week,@inscription] do |f|%>
-			<div class "form-group">
-
-				<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
-				 <%end%>
-				<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", :back%></button>
+<%= form_for [@week,@inscription] do |f|%>
+	<div class "form-group">
+		<%= f.hidden_field :week_id, value:  @week.id.to_s %>
+		<%= f.hidden_field :user_id, value:  current_user.id.to_s %>
+		<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
+	</div>
+ <%end%>
+	<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", :back%></button>

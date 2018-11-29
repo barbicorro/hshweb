@@ -3,11 +3,8 @@ class InscriptionsController < ApplicationController
 
  def create
     @week = Week.find(params[:week_id])
-    @inscription = @week.build_inscription(params.require(:inscription))
-    @inscription.week_id = params[:week_id]
-    @inscription.user_id = current_user.id
-    if @inscription.save
-        redirect_to :back , notice: 'Inscripcion exitosa'
+    if @inscription = @week.inscriptions.create(params.require(:inscription).permit(:week_id,:user_id))
+        redirect_to root_path , notice: 'Inscripcion exitosa'
     else
       render :new
     end
@@ -22,7 +19,7 @@ class InscriptionsController < ApplicationController
 
   def new
     @week = Week.find(params[:week_id])
-    @inscription = @week.build_inscription
+    @inscription = @week.inscriptions.new
   end
 
 
