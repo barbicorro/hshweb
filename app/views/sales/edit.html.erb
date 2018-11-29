@@ -12,7 +12,9 @@
 			<ul>
 				<h5><li>Precio inicial: $<%=@sale.precioBase%></li></h5>
 				<h5><li>Precio actual: $<%=@sale.precioPuja%></li></h5>
-				<h5><li>Ganador actual: <%=User.find(@sale.ganadorActual).name%></li></h5>
+				<% if @sale.ganadorActual != nil %>
+					<h5><li>Ganador actual: <%=User.find(@sale.ganadorActual).name%></li></h5>
+				<%end%>
 			</ul>
 			<br><br>
 			<%= form_for [@week,@sale], :url => week_sales_path(@sale) do |f| %>
