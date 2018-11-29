@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     end  
 
+    resources :sales, only: [:index]
+
     resources :usuarios
 
 end

@@ -1,10 +1,6 @@
 class SalesController < ApplicationController
   def index
-    @sales = Sale.all
-  end
-  def inicio
-  	 @week = Week.find(params[:week_id])
-  	 @week.updateStatus
+    @residences = Residence.all
   end
   def create
     @week = Week.find(params[:week_id])
@@ -16,7 +12,7 @@ class SalesController < ApplicationController
     if @sale.save
         @week.sale_id = @sale.id
         @week.save
-        redirect_to residences_path , notice: 'La subasta fue configurada exitosamente'
+        redirect_to sales_path , notice: 'La subasta fue configurada exitosamente'
     else
       render :new
     end
