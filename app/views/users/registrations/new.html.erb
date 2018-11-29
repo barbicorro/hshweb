@@ -26,6 +26,7 @@ _
               <%=f.number_field :age, class: 'form-control mb-3',min: "18",autofocus:true, required:true %>
             </div>
 
+
             <div class="col-3"> 
               <div><%= f.label :date_of_birth, "Fecha de nacimiento"%></div>
               <div id="sandbox-container">
@@ -47,14 +48,8 @@ _
             <div class="col-3"> 
              <%= f.label :image ,"URL de la imagen",class: 'text-white mb-1'%>  
               <%= f.url_field :image, class: 'form-control mb-3', placeholder: "Ingrese el link de su foto ", required: true %></div>
-              
-               <div class="col-3"> 
-             <%= f.label :type ,"Tipo de usuario",class: 'text-white mb-1'%>  
-              
-              <input type="text" readonly class="form-control-plaintext text-white" id="type" value="Usuario Base">
-
               </div>
-            </div>
+        
             <div class="row">
             <div class="col-5"> 
             <%= f.input :email,
@@ -76,6 +71,7 @@ _
                         input_html: { autocomplete: "Confirme su contraseña" } %></div>
           </div>
           </div>
+
       
       <h4>Datos de su tarjeta </h4> 
           <div class="form-group row">

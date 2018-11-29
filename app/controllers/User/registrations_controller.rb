@@ -5,21 +5,25 @@ class User::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-     super
-   end
+#def new
+  #   @user=User.new
+ #  end
 
   # POST /resource
   def create
-    super
-     @user=User.new(params.required(:user).permit(:date_venc,:age,:cod,:card_Number,
+   super
+   @user=User.new(params.required(:user).permit(:date_venc,:age,:cod,:card_Number,
       :name,:image,:date_of_birth,:email,:lastname,:password,:password_confirmation,
-      :card_Marca,3)
+      :card_Marca)
+    @user.user_type_id = 3
 
-     redirect_to :back , notice: 'Registro exitoso'
-     else
-        redirect_to user_sign_up_path , notice: 'Error'
-     end
+    if @user.save
+        redirect_to :back , notice: 'Usuario creado exitosamente'
+    else
+      render :new
+    end
+
+  end
      
 
    end

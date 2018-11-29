@@ -19,6 +19,8 @@
 			    		<li>Apellido: <%=@usuario.lastname%></li>
 			    		<li>Edad: <%=@usuario.age%></li>
 			    		<li>Fecha de nacimiento: <%=@usuario.date_of_birth%></li>
+			    		<li>Tipo de usuario: <%=UserType.find(@usuario.user_type_id).name%></li>
+
 			    	</ul>
 		  		</div>
 			
