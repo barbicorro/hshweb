@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20181128175939) do
     t.time "horaInicio"
     t.float "precioBase"
     t.float "precioPuja"
+    t.integer "ganadorActual"
     t.integer "week_id"
     t.integer "residence_id"
     t.datetime "created_at", null: false

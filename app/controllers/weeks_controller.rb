@@ -1,7 +1,7 @@
 class WeeksController < ApplicationController
 	def create
 		@residence = Residence.find(params[:residence_id])
-		@week = @residence.weeks.create(params.require(:week).permit(:period,:status_id,:residence_id))
+		@week = @residence.weeks.create(params.require(:week).permit(:period,:status_id,:residence_id,:term))
 		redirect_to residence_path(@residence)
 	end
 
@@ -25,5 +25,9 @@ class WeeksController < ApplicationController
 
 	def edit
 		@week= Week.find(params[:id])
+	end
+
+	def weekList
+		@weeks = Week.search(params[:term])
 	end
 end

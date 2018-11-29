@@ -18,7 +18,7 @@
               <td><%= week.period.strftime('%d/%m/%Y') %> </td>
               <td><%= Status.find(week.status_id).name %> </td>
               <% if (week.status_id == 1) && (week.sale == nil) %>
-                  <td><%= link_to "Iniciar", edit_week_path(week), class: 'btn btn-primary'%> </td>
+                  <td><%= link_to "Configurar", edit_week_path(week), class: 'btn btn-primary'%> </td>
               <% elsif (week.status_id == 1) && (week.sale != nil) %>
                   <td> Ya configurada </td>
               <%elsif (week.status_id == 2) && ((week.sale.fechaFin >= Date.today) || (week.sale.fechaInicio <= Date.today))%>
