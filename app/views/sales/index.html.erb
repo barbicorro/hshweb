@@ -18,11 +18,12 @@
       </thead>
       <tbody>
       <% @entro= 1%>
+      
         <% if (current_user.user_type_id == 1)%>
         <% @residences.each do |residence| %>
           <% residence.weeks.each do |week| %>
             <tr>
-            <% if (week.sale != nil) && ((week.sale.fechaInicio == Date.today) || (week.sale.fechaFin == Date.today)) %>
+            <% if (week.sale != nil) && ((week.sale.fechaInicio <= Date.today) || (week.sale.fechaFin >= Date.today)) %>
               <td> <%= Residence.find(week.residence_id).title%> </td>
               <td><%= week.period.strftime('%d/%m/%Y') %> </td>
               <td><%= week.sale.precioBase %> </td>
@@ -63,7 +64,8 @@
           <% end %>
         <% end %>
        <% end %>
-        
+
+     
       </tbody>
     </table>
   </div>

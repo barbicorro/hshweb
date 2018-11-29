@@ -13,7 +13,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.date :date_venc
       t.integer :user_type_id, null: false, default: 3
       t.string :image
-      t.integer :credits
+      t.integer :credits,null: false, default: 2
       t.integer :week1_id
       t.integer :week2_id
 

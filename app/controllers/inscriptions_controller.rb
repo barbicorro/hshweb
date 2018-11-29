@@ -13,7 +13,11 @@ class InscriptionsController < ApplicationController
     end
   end
   def index
+  	if (user_signed_in?)
       @inscription = Inscription.all
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def new
@@ -29,6 +33,7 @@ class InscriptionsController < ApplicationController
   def show
     @inscription = Inscription.find(params[:id])
   end
+
 
 
     def update
