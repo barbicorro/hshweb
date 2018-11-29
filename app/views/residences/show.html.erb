@@ -28,20 +28,6 @@
 		  </div>
 		</div>
 
-		<div class="card text-white bg-dark col-8 mt-3" >
-		  <div class="card-header text-center bg-primary"><h5>Descripción</h5></div>
-		  <div class="card-body">
-		    <p class="card-text text-justify">
-		    	<%@residence.weeks.each do |week|%>
-			    	<p>
-			    		<strong>Estado de la semana <%= week.period%></strong>
-			    		<%= Status.find(week.status_id).name %>
-			    	</p>
-		    	<%end%>
-		    </p>
-		  </div>
-		</div>
-
 		<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", residences_path%></button>
 	</div>	
 </div> 
