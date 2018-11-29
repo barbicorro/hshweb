@@ -6,6 +6,7 @@ class CreateSales < ActiveRecord::Migration[5.1]
       t.time :horaInicio
       t.float :precioBase
       t.float :precioPuja
+      t.integer :ganadorActual
       t.integer :week_id
       t.integer :residence_id
 

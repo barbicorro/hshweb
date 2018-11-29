@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20181128175939) do
     t.time "horaInicio"
     t.float "precioBase"
     t.float "precioPuja"
+    t.integer "ganadorActual"
     t.integer "week_id"
     t.integer "residence_id"
     t.datetime "created_at", null: false
@@ -60,7 +61,7 @@ ActiveRecord::Schema.define(version: 20181128175939) do
     t.integer "age"
     t.date "date_of_birth"
     t.date "date_venc"
-    t.integer "type"
+    t.integer "type", default: 3
     t.string "image"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
