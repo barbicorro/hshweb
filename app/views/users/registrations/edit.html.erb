@@ -29,8 +29,16 @@
             <div class="col-3"> 
             
             <h5><%= f.label :date_of_birth, "Fecha de nacimiento"%></h5>
-            <input type="text" readonly class="form-control-plaintext text-white" id="date_of_birth" value="<%=current_user.date_of_birth%>">
+            <%=current_user.date_of_birth%>
             </div>
+
+            <div class="col-3"> 
+            
+            <h5><%= f.label :user_type_id, "id tipo de usuario"%></h5>
+            
+            </div>
+
+
 
             </div>
            

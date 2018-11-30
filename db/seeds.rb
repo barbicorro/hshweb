@@ -4,7 +4,6 @@
 
 # Examples:
 #
-#locations = Location.create([{ country: 'Argentina', province: 'Buenos Aires', locality: 'La Plata' },
 
 
 resi1= Residence.create({title: 'Hotel 1', address: 'calle 150 n1992',description:'hotel 5 estrellas',
@@ -17,7 +16,6 @@ resi3= Residence.create({title: 'Hotel 3', address: 'calle 156 n192',
 type1=UserType.create({name:'Usuario Administrador'})
 type2=UserType.create({name:'Usuario Premium'})
 type3=UserType.create({name:'Usuario base'})
-
 
 
 #Status.create(name:string)

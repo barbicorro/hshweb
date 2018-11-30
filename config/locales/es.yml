@@ -106,6 +106,7 @@ es:
       month: Mes
       second: Segundos
       year: Año
+
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -144,6 +145,8 @@ es:
       header:
         one: No se pudo guardar este/a %{model} porque se encontró 1 error
         other: No se pudo guardar este/a %{model} porque se encontraron %{count} errores
+  
+
   helpers:
     select:
       prompt: Por favor seleccione
