@@ -16,6 +16,7 @@ class User::RegistrationsController < Devise::RegistrationsController
       :name,:image,:date_of_birth,:email,:lastname,:password,:password_confirmation,
       :card_Marca)
     @user.user_type_id = 3
+    @user.credits = 2
 
     if @user.save
         redirect_to :back , notice: 'Usuario creado exitosamente'
