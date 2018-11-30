@@ -66,16 +66,19 @@
                <td><%= link_to "Participar", edit_week_sales_path(week), class: 'btn btn-primary'%></td>
               <% end %>
 
+
               <% elsif (@entro==1) %>
                <h3 class="text-white mb-3">Actualmente no hay subastas activas</h3>
                 <% @entro=2 %>
               <% end %>
+
             </tr>
           <% end %>
         <% end %>
+        <% if (@entro==1) %>
+               <h3 class="text-white mb-3">Actualmente no hay subastas activas</h3>
        <% end %>
-
-
+       <% end %>
       </tbody>
     </table>
   </div>
