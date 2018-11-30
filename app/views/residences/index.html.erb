@@ -1,8 +1,7 @@
 <div class="container-fluid bg-dark pb-4">
-  <div class="text-center"> 
+  <div class="text-center">
       <h2 class="text-white mb-3">Residencias</h2>
-      <div class="alert text-white mb-3 alert-expand-lg bg-dark"> 
-      <%= notice%>
+    
       </div>
   </div>
 
@@ -27,7 +26,7 @@
             <td><%= residence.province %> </td>
             <td><%= residence.country %> </td>
             <td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-primary'%> </td>
-            <td><%= link_to "Borrar", residence, method: :delete, class: 'btn btn-info btn-danger', 
+            <td><%= link_to "Borrar", residence, method: :delete, class: 'btn btn-info btn-danger',
             data: { confirm: "¿Está seguro de que quiere eliminar la residencia?" } %> </td>
 
           </tr>

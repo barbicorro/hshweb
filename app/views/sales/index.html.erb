@@ -1,7 +1,6 @@
 <div class="container-fluid bg-dark pb-4">
   <div class="text-center">
     <h2 class="text-white mb-3">Subastas</h2>
-    <div class="alert text-white mb-3 alert-expand-lg bg-dark"><%= notice%></div>
   </div>
   <div class="row">
     <table style="table", class="table table-dark">
@@ -66,7 +65,7 @@
                <%if (@inscrip==1) %>
                <td><%= link_to "Participar", edit_week_sales_path(week), class: 'btn btn-primary'%></td>
               <% end %>
-              
+
               <% elsif (@entro==1) %>
                <h3 class="text-white mb-3">Actualmente no hay subastas activas</h3>
                 <% @entro=2 %>
