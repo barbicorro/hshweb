@@ -14,7 +14,7 @@ class User::RegistrationsController < Devise::RegistrationsController
    super
    @user=User.new(params.required(:user).permit(:date_venc,:age,:cod,:card_Number,
       :name,:image,:date_of_birth,:email,:lastname,:password,:password_confirmation,
-      :card_Marca)
+      :card_Marca))
     if @user.save
         redirect_to :back , notice: 'Usuario creado exitosamente'
     else
