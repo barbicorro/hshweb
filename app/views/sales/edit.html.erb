@@ -21,6 +21,7 @@
 				<div class="row mb-2 d-inline-flex">
 					<h5 class="col-3 offset-1"><%= f.label :precioPuja, "Tu puja", class: 'text-white'%></h5>
 					<div class="col-5">
+						<%= f.hidden_field :week_id, value:  @week.id %>
 						<%= f.number_field :precioPuja, class: 'form-control', min: "0",
 						required: true %>
 					</div>
