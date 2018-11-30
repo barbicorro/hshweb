@@ -4,8 +4,8 @@ class UserTypesController < ApplicationController
      @type=UserType.new
    end
 
- 
+
   def create
-     @type=UserType.new(params.required(:user_type).permit(:name)
+     @type=UserType.new(params.required(:user_type).permit(:name))
    end
 end
