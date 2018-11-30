@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181115212342) do
+ActiveRecord::Schema.define(version: 20181129135011) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "inscriptions", force: :cascade do |t|
+    t.integer "week_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "residences", force: :cascade do |t|
     t.string "title"
@@ -25,22 +35,63 @@ ActiveRecord::Schema.define(version: 20181115212342) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.datetime "fechaInicio"
+    t.date "fechaInicio"
+    t.date "fechaFin"
+    t.time "horaInicio"
     t.float "precioBase"
     t.float "precioPuja"
-    t.datetime "fechaFin"
+    t.integer "ganadorActual"
     t.integer "week_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["week_id"], name: "index_sales_on_week_id"
-  end
-
-  create_table "weeks", force: :cascade do |t|
-    t.string "status"
     t.integer "residence_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["residence_id"], name: "index_weeks_on_residence_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "lastname"
+    t.string "card_Number"
+    t.string "card_Marca"
+    t.integer "cod"
+    t.integer "age"
+    t.date "date_of_birth"
+    t.date "date_venc"
+    t.integer "user_type_id", default: 3, null: false
+    t.string "image"
+    t.integer "credits"
+    t.integer "week1_id"
+    t.integer "week2_id"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "weeks", force: :cascade do |t|
+    t.date "period"
+    t.integer "status_id"
+    t.integer "residence_id"
+    t.integer "sale_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

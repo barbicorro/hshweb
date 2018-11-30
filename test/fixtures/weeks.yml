@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  status: MyString
-  residence: one
+  period: 2018-11-19
+  status_id: 1
+  residence_id: 1
+  sale_id: 1
 
 two:
-  status: MyString
-  residence: two
+  period: 2018-11-19
+  status_id: 1
+  residence_id: 1
+  sale_id: 1

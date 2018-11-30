@@ -1,6 +1,8 @@
 class ResidencesController < ApplicationController
+  
+
   def index
-    @residences = Residence.all
+      @residences = Residence.all
   end
 
   def home
@@ -22,7 +24,7 @@ class ResidencesController < ApplicationController
 
   def update
     @residence = Residence.find(params[:id])
-    if @residence.update(params.require(:residence).permit(:title,:address,:description,:country,:province,:locality,:image))
+    if @residence.update(residence_params)
        redirect_to residences_path , notice: "La residencia fue modificada exitosamente"
      else
        render :edit
@@ -30,9 +32,12 @@ class ResidencesController < ApplicationController
   end
 
   def create
-    @residence =Residence.new(params.require(:residence).permit(:title,:address,:description,:country,:province,:locality,:image))
+    @residence =Residence.new(residence_params)
      if @residence.save
-       redirect_to residences_path , notice: 'La residencia fue publicada exitosamente'
+        (1..52).each do |i|
+          @week = Week.create({period: Date.commercial(2019, i,1), status_id: 1, residence_id: @residence.id})  
+        end
+        redirect_to residences_path , notice: 'La residencia fue publicada exitosamente'
      else
         redirect_to new_residence_path , notice: 'La residencia ya existe'
      end
@@ -45,7 +50,10 @@ class ResidencesController < ApplicationController
     else 
       redirect_to residences_path,notice: "Error al eliminar la residencia"
     end
-
 	end
+
+  def residence_params
+    params.require(:residence).permit(:title,:address,:description,:country,:province,:locality,:image)
+  end
 
 end
