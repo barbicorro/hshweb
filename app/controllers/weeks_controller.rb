@@ -7,11 +7,29 @@ class WeeksController < ApplicationController
 
 	def update
 		@week= Week.find(params[:id])
-		if @week.update(params.require(:week).permit(:status_id))
-	       redirect_to edit_week_sales_path(@week) , notice: "La subasta ha iniciado"
-	     else
-	       redirect_to weeks_path , notice: "Ha habido algún problema con la inicialización de la subasta"
-	     end
+		if @week.update(update_params)
+			if (params[:week][:status_id].to_i == 2) #pasar a estado subasta
+       			redirect_to edit_week_sales_path(@week) , notice: "La subasta ha iniciado"
+	    	elsif (params[:week][:status_id].to_i == 3) #pasar a estado reservada
+	     		@residence = Residence.find(@week.residence_id)
+	     		@week.sale.destroy
+	     		@user = User.find(params[:week][:user_id])
+	     		if (@user.week1_id == nil)
+	     			@user.week1_id = @week.id
+	     		else
+	     			@user.week2_id = @week.id
+	     		end
+	     		@user.credits -= 1
+	     		@user.save
+	       		redirect_to residence_weeks_path(@residence) , notice: "La subasta ha finalizado"
+	       	elsif (params[:week][:status_id].to_i == 4)
+	       		@residence = Residence.find(@week.residence_id)
+	     	  	redirect_to residence_weeks_path(@residence) , notice: "La subasta ha finalizado"
+	     	else
+	     		@residence = Residence.find(@week.residence_id)s
+	     	  	redirect_to residence_weeks_path(@residence) , notice: "Ha habido algún problema"
+	     	end
+	    end 	
 	end
 	
 	def new
@@ -29,5 +47,9 @@ class WeeksController < ApplicationController
 
 	def weekList
 		@weeks = Week.search(params[:term])
+	end
+
+	def update_params
+		params.require(:week).permit(:status_id,:user_id)
 	end
 end
