@@ -1,0 +1,9 @@
+<h3 class="text-white mb-3">¿Seguro que quiere inscribirse a la subasta ?</h3> 
+	
+		<%= form_for @inscription do |f|%>
+			<div class "form-group">
+				<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
+				<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", :back%></button>
+		
+
+ <%end%>
