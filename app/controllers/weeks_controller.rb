@@ -26,7 +26,7 @@ class WeeksController < ApplicationController
 	       		@residence = Residence.find(@week.residence_id)
 	     	  	redirect_to residence_weeks_path(@residence) , notice: "La subasta ha finalizado"
 	     	else
-	     		@residence = Residence.find(@week.residence_id)s
+	     		@residence = Residence.find(@week.residence_id)
 	     	  	redirect_to residence_weeks_path(@residence) , notice: "Ha habido algún problema"
 	     	end
 	    end 	
