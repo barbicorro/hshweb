@@ -16,7 +16,11 @@ class InscriptionsController < ApplicationController
 
 
   def index
+  	if (user_signed_in?)
       @inscription = Inscription.all
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def new
