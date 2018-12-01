@@ -19,6 +19,7 @@
 			<br><br>
 			<%= form_for [@week,@sale], :url => week_sales_path(@sale) do |f| %>
 				<div class="row mb-2 d-inline-flex">
+					<%= f.hidden_field :week_idd, value:  @week.id %>
 					<h5 class="col-3 offset-1"><%= f.label :precioPuja, "Tu puja", class: 'text-white'%></h5>
 					<div class="col-5">
 						<%= f.number_field :precioPuja, class: 'form-control', min: "0",
