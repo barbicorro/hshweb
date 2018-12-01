@@ -14,5 +14,5 @@ class User < ApplicationRecord
 	validates :cod, presence:true,numericality:true, length:{minimum: 3, maximum:3, message: "Debe tener 3 digitos numericos"}
 
  	has_many :inscriptions
-	has_many :sales, through: :inscriptions
+	has_many :weeks, through: :inscriptions
 end
