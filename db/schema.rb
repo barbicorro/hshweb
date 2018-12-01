@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 20181129135011) do
   enable_extension "plpgsql"
 
   create_table "inscriptions", force: :cascade do |t|
-    t.bigint "sale_id"
+    t.integer "week_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sale_id"], name: "index_inscriptions_on_sale_id"
   end
 
   create_table "residences", force: :cascade do |t|
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20181129135011) do
     t.integer "user_type_id", default: 3, null: false
     t.string "image"
     t.integer "credits"
+    t.integer "week1_id"
+    t.integer "week2_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -87,9 +89,9 @@ ActiveRecord::Schema.define(version: 20181129135011) do
     t.integer "status_id"
     t.integer "residence_id"
     t.integer "sale_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "inscriptions", "sales"
 end
