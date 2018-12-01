@@ -95,6 +95,15 @@
                 <div id="sandbox-container2">
                 <%= f.text_field :date_venc, "data-provide" => 'datepicker', class: 'form-control mb-3', required: true %>
               </div>
+                <script type="text/javascript">
+                  $('#sandbox-container2 input').datepicker({
+                      startDate: "today",
+                      language: "es",
+                      orientation: "bottom left",
+                      calendarWeeks: true,
+                      autoclose: true
+                  });
+                </script>
 
         </div>
              <div class="form-actions">

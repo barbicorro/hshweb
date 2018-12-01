@@ -8,11 +8,12 @@ class SalesController < ApplicationController
     @sale.fechaFin = @sale.fechaInicio + 3
     @sale.precioPuja = @sale.precioBase
     @sale.week_id = params[:week_id]
-    @sale.residence_id = Residence.find(@week.residence_id).id
+    @residence = Residence.find(@week.residence_id)
+    @sale.residence_id = @residence.id
     if @sale.save
         @week.sale_id = @sale.id
         @week.save
-        redirect_to sales_path , notice: 'La subasta fue configurada exitosamente'
+        redirect_to residence_weeks_path(@residence) , notice: 'La subasta fue configurada exitosamente'
     else
       render :new
     end

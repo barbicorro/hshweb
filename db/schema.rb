@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20181128175939) do
     t.date "date_venc"
     t.integer "user_type_id", default: 3, null: false
     t.string "image"
+    t.integer "credits"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
