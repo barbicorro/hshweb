@@ -5,8 +5,9 @@ class Week < ApplicationRecord
 	validates :period, presence:true
     validates :status_id, presence:true
     validates :residence_id, presence:true
-    has_one :user
-
+    	
+	has_many :inscriptions
+	has_many :users, through: :inscriptions
 
     def self.search(term)
 	  if term

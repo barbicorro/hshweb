@@ -12,7 +12,7 @@ class User < ApplicationRecord
 	validates :card_Marca, presence:true
 	validates :card_Number, presence:true,numericality:true, length:{minimum: 16, maximum:16,message: "Debe tener 16 digitos"}
 	validates :cod, presence:true,numericality:true, length:{minimum: 3, maximum:3, message: "Debe tener 3 digitos numericos"}
- 	
- 	
-	has_many :sales
+
+ 	has_many :inscriptions
+	has_many :sales, through: :inscriptions
 end
