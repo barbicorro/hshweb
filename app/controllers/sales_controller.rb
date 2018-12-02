@@ -38,6 +38,7 @@ class SalesController < ApplicationController
     @week = Week.find(params[:week_id]) 
     @sale = @week.sale
     if (params[:sale][:precioPuja].to_f > @sale.precioPuja)
+      @sale.ganadorActual = current_user.id
       if @sale.update(params.require(:sale).permit(:precioPuja))
          redirect_to edit_week_sales_path, notice: "Su puja fue exitosamente procesada"
       else

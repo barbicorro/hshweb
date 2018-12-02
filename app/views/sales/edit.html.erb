@@ -10,8 +10,9 @@
 			<h2>Residencia: <%=Residence.find(@week.residence_id).title%></h2>
 			<br>
 			<ul>
-				<h5><li>Precio inicial: <%=@sale.precioBase%></li></h5>
-				<h5><li>Precio actual: <%=@sale.precioPuja%></li></h5>
+				<h5><li>Precio inicial: $<%=@sale.precioBase%></li></h5>
+				<h5><li>Precio actual: $<%=@sale.precioPuja%></li></h5>
+				<h5><li>Ganador actual: <%=User.find(@sale.ganadorActual).name%></li></h5>
 			</ul>
 			<br><br>
 			<%= form_for [@week,@sale], :url => week_sales_path(@sale) do |f| %>
