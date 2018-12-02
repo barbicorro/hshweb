@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 	default_scope -> { order("Name") }
-	validates :age,  presence:true ,numericality:true, inclusion:{in:21..99, message: "debe ser mayor a 18 años"}
+	validates :date_venc_month, inclusion: { in: %w(Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre),
+    message: "%{value} no es un mes valido" }
+    validates :date_venc_year, exclusion:{in:0..2018}
 	validates :name, presence:true
 	validates :lastname, presence:true
 	validates :image, presence:true

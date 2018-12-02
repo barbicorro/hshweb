@@ -5,34 +5,33 @@
 			<h2 class="text-white mb-3"><%= "Perfil de #{@usuario.name}"%></h2>
 		<div class="bg-dark"><br /></div>
 
-		<div class="row offset-2">
+		<div class="row offset-1">
 
-			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 "
+			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-5 "
 			height="500px" width="500 px">
-			<div class="bg-dark"> <p></p>  </div>
-			<div class="bg-dark"> <p></p>  </div>
+
+
 
 			<div class="card text-white bg-dark col-5 offset-1" >
 			  <div class="card-header text-center bg-primary"><h5> Datos personales </h5></div>
 			  <div class="card-body">
 			    	<ul class="card-text text-justify">
+							<ul class="card-text text-justify">
 			    		<li>Nombre: <%=@usuario.name%></li>
 			    		<li>Apellido: <%=@usuario.lastname%></li>
-			    		<li>Edad: <%=@usuario.age%></li>
+			    		<li>Edad: <%=Date.today.year - @usuario.date_of_birth.year%></li>
 			    		<li>Fecha de nacimiento: <%=@usuario.date_of_birth%></li>
 			    		<li>Tipo de usuario: <%=UserType.find(@usuario.user_type_id).name%></li>
-
+							<li>Creditos disponibles: <%=@usuario.credits%></li>
 			    	</ul>
 		  		</div>
-
 
 		<div class="card-header text-center bg-primary"><h5> Datos de tarjeta</h5></div>
 		  <div class="card-body">
 		    	<ul class="card-text text-justify">
 		    		<li>Marca: <%=@usuario.card_Marca%></li>
 		    		<li>Numero: <%=@usuario.card_Number%></li>
-		    		<li>Codigo: <%=@usuario.cod%></li>
-		    		<li>Fecha de vencimiento: <%=@usuario.date_venc%></li>
+		    		<li>Fecha de vencimiento: <%=@usuario.date_venc_month%> de <%=@usuario.date_venc_year%> </li>
 
 		    	</ul>
 		  </div>

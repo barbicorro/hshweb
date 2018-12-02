@@ -8,14 +8,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :card_Number
       t.string :card_Marca
       t.integer :cod
-      t.integer :age
+
       t.date :date_of_birth
-      t.date :date_venc
+      t.string :date_venc_month
+      t.integer :date_venc_year
       t.integer :user_type_id, null: false, default: 3
       t.string :image
       t.integer :credits,null: false, default: 2
-      t.integer :week1_id
-      t.integer :week2_id
+      t.integer :week1_id,null: false, default: 0
+      t.integer :week2_id,null: false, default: 0
 
       ## Database authenticatable
       t.string :email,              null: false, default: ""

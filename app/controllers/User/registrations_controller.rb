@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::RegistrationsController
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -12,15 +13,18 @@ class User::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
    super
-   @user=User.new(params.required(:user).permit(:date_venc,:age,:cod,:card_Number,
+   @user=User.new(params.required(:user).permit(:date_venc_month,:date_venc_year,:cod,:card_Number,
       :name,:image,:date_of_birth,:email,:lastname,:password,:password_confirmation,
-      :card_Marca))
+      :card_Marca)
     if @user.save
         redirect_to :back , notice: 'Usuario creado exitosamente'
     else
       render :new
     end
   end
+
+
+
 end
 
   # GET /resource/edit

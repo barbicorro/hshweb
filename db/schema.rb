@@ -65,16 +65,12 @@ ActiveRecord::Schema.define(version: 20181129135011) do
     t.string "card_Number"
     t.string "card_Marca"
     t.integer "cod"
-    t.integer "age"
     t.date "date_of_birth"
-    t.date "date_venc"
+    t.string "date_venc_month"
+    t.integer "date_venc_year"
     t.integer "user_type_id", default: 3, null: false
     t.string "image"
-<<<<<<< HEAD
     t.integer "credits", default: 2, null: false
-=======
-    t.integer "credits"
->>>>>>> ef723a72cd0f2f3926d1235a6e5aa2021732bd21
     t.integer "week1_id"
     t.integer "week2_id"
     t.string "email", default: "", null: false

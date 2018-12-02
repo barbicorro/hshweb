@@ -21,11 +21,6 @@ _
               </div>
           </div>
           <div class="row">
-            <div class="col-4">
-              <div><%= f.label :age, "Edad"%> </div>
-              <%=f.number_field :age, class: 'form-control mb-3',min: "18",autofocus:true, required:true %>
-            </div>
-
 
             <div class="col-4">
               <div><%= f.label :date_of_birth, "Fecha de nacimiento"%></div>
@@ -92,22 +87,46 @@ _
                 <div><%= f.label :card_Number, "Numero de la tarjeta"%>
                 <%= f.text_field :card_Number,class: 'form-control mb-3', autofocus: true,required: true, hint: ("#{@minimum_card_Number_length} digitos minimo" if @minimum_cod_length)%> </div>
 
-              </div>
-              <div class="col-4">
-                <div><%= f.label :date_venc, "Fecha de vencimiento"%></div>
-                <div id="sandbox-container2">
-                <%= f.text_field :date_venc, "data-provide" => 'datepicker', class: 'form-control mb-3', required: true %>
-                </div>
-                <script type="text/javascript">
-                  $('#sandbox-container2 input').datepicker({
-                      startDate: "today",
-                      language: "es",
-                      orientation: "bottom left",
-                      calendarWeeks: true,
-                      autoclose: true
-                  });
-                </script>
-               </div>
+
+            </div>
+          </div>
+            <h6> Fecha de vencimiento</h6>
+              <div class="form-group row">
+
+                <div class="col-4">
+
+                        <select class="form-control" id="date_venc_month">
+                        <option>Enero</option>
+                        <option>Febrero</option>
+                        <option>Marzo</option>
+                        <option>Abril</option>
+                        <option>Mayo</option>
+                        <option>Junio</option>
+                        <option>Julio</option>
+                        <option>Agosto</option>
+                        <option>Septiembre</option>
+                        <option>Octubre</option>
+                        <option>Noviembre</option>
+                        <option>Diciembre</option>
+
+                      </select>
+                    </div>
+                    <div class="col-4">
+
+                            <select class="form-control" id="date_venc_year">
+                            
+                            <option>2019</option>
+                            <option>2020</option>
+                            <option>2021</option>
+                            <option>2022</option>
+                            <option>2023</option>
+                            <option>2024</option>
+                            <option>2025</option>
+                            <option>2026</option>
+                            <option>2027</option>
+
+                          </select>
+                        </div>
             </div>
 
       <div class="form-actions">
