@@ -24,7 +24,7 @@ user1= User.create(date_venc:"2019-02-22",age: "22",cod:"123", card_Number:"1234
 
 user2= User.create(date_venc:"2019-02-22",age: "23",cod:"123", card_Number:"1234567890123456",
 	 	 name:"Katniss",image:"https://az616578.vo.msecnd.net/files/responsive/cover/main/desktop/2016/03/13/635934379782292055-1367934424_jennifer_lawrence_katniss_everdeen-HD-1.jpg",
-	 	 date_of_birth:"1995-04-15",email:"lion@gmail.com",lastname:"Everdeen",
+	 	 date_of_birth:"1995-04-15",email:"kt@gmail.com",lastname:"Everdeen",
 	 	 password:"123456",password_confirmation:"123456",card_Marca:"mastercard",user_type_id:"2")
 
 user3= User.create(date_venc:"2019-02-22",age: "45",cod:"123", card_Number:"1234567890123456",
