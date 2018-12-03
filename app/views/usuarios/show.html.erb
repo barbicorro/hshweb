@@ -1,13 +1,14 @@
 <div class="container-fluid bg-dark pb-4">
-	<div class="text-center"> 
+	<div class="text-center">
 	<div class="bg-dark"><br /></div>
-	
+
 			<h2 class="text-white mb-3"><%= "Perfil de #{@usuario.name}"%></h2>
 		<div class="bg-dark"><br /></div>
 
 		<div class="row offset-2">
-		
-			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 " height="450px" width="400 px">
+
+			<img src= "<%=@usuario.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 "
+			height="500px" width="500 px">
 			<div class="bg-dark"> <p></p>  </div>
 			<div class="bg-dark"> <p></p>  </div>
 
@@ -23,7 +24,7 @@
 
 			    	</ul>
 		  		</div>
-			
+
 
 		<div class="card-header text-center bg-primary"><h5> Datos de tarjeta</h5></div>
 		  <div class="card-body">
@@ -32,7 +33,7 @@
 		    		<li>Numero: <%=@usuario.card_Number%></li>
 		    		<li>Codigo: <%=@usuario.cod%></li>
 		    		<li>Fecha de vencimiento: <%=@usuario.date_venc%></li>
-			    		
+
 		    	</ul>
 		  </div>
 
@@ -45,5 +46,5 @@
 			<button class="btn btn-lg btn-block btn-white col-2 offset-3 mt-3"><%= link_to "Editar perfil", edit_user_registration_path%></button>
 			<button class="btn btn-lg btn-block btn-white col-2 offset-2 mt-3"><%= link_to "Volver", usuarios_path%></button>
 		</div>
-	</div>	
-</div> 
+	</div>
+</div>

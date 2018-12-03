@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20181129135011) do
     t.date "date_venc"
     t.integer "user_type_id", default: 3, null: false
     t.string "image"
-    t.integer "credits", default: 2, null: false
+    t.integer "credits"
     t.integer "week1_id"
     t.integer "week2_id"
     t.string "email", default: "", null: false

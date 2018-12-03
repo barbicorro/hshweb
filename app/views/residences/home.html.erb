@@ -1,9 +1,9 @@
 <div class="container-fluid bg-dark pb-4 ">
-	
-	<div class="alert text-white mb-3 alert-expand-lg bg-dark"> 
+
+	<div class="alert text-white mb-3 alert-expand-lg bg-dark">
       <%= notice%>
       </div>
-	<div class="text-center"> 
+	<div class="text-center">
 	      <h2 class="text-white mb-3">Bienvenido a Home Switch Home</h2>
 	</div>
 	<div class="bg-dark"><br /></div>
@@ -15,6 +15,7 @@
 	  <div id="sandbox-container">
 	    <%= text_field_tag :term, params[:term], "data-provide" => 'datepicker', class: 'form-control mr-sm-2', required: true %>
 	  </div>
+
 	  <h5>  </h5>
 	    <%= submit_tag 'Buscar', name: nil, class: 'btn btn-outline-primary my-2 my-sm-0' %>
 	  <% end %>
@@ -32,5 +33,3 @@
 	  </script>
 	 <br><br><br><br><br><br><br><br>
 </div>
-
-
