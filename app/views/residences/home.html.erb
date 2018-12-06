@@ -8,26 +8,4 @@
 
 	<img src="http://www.todopaisajes.com/1920x1080/hotel-5-estrellas-en-la-playa.jpg" class="shadow p-3 mb-5 bg-secondary rounded col-10 offset-1" height="500px">
 	<br><br>
-	<h3 class ="text-white mb-1"> Buscar residencias </h3>
-	<%= form_tag(weekList_path,method: :get, class: 'form-inline my-2 my-lg-0') do %>
-	  <div id="sandbox-container">
-	    <%= text_field_tag :term, params[:term], "data-provide" => 'datepicker', class: 'form-control mr-sm-2', required: true %>
-	  </div>
-
-	  <h5>  </h5>
-	    <%= submit_tag 'Buscar', name: nil, class: 'btn btn-outline-primary my-2 my-sm-0' %>
-	  <% end %>
-	  <script type="text/javascript">
-	        $('#sandbox-container input').datepicker({
-	            format: "dd/mm/yyyy",
-	            startDate: "+7m",
-	            endDate: "+9m",
-	            language: "es",
-	            daysOfWeekDisabled: "0,2,3,4,5,6",
-	            orientation: "bottom left",
-	            calendarWeeks: true,
-	            autoclose: true
-	        });
-	  </script>
-	 <br><br><br><br><br><br><br><br>
 </div>

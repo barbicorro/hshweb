@@ -1,8 +1,11 @@
 class ResidencesController < ApplicationController
-  
 
   def index
-      @residences = Residence.all
+    if (user_signed_in?)
+      @residences = Residence.search(term1: params[:term1], term: params[:term])
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def home
@@ -53,7 +56,7 @@ class ResidencesController < ApplicationController
 	end
 
   def residence_params
-    params.require(:residence).permit(:title,:address,:description,:country,:province,:locality,:image)
+    params.require(:residence).permit(:title,:address,:description,:country,:province,:locality,:image,:term1,:term)
   end
 
 end

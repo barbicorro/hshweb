@@ -46,7 +46,7 @@ class WeeksController < ApplicationController
 	end
 
 	def weekList
-		@weeks = Week.search(params[:term])
+		@weeks = Week.all
 	end
 
 	def update_params

@@ -10,12 +10,4 @@ class Week < ApplicationRecord
 	has_many :inscriptions
 	has_many :users, through: :inscriptions
 
-    def self.search(term)
-	  if term
-	    where(:period => term)
-
-	  else
-	    all
-	  end
-	end
 end

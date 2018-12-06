@@ -20,8 +20,6 @@ Rails.application.routes.draw do
     resources :sales, only: [:index]
     resources :inscriptions, only: [:index]
 
-    get 'weekList', to: 'weeks#weekList', as: :weekList
-
     get 'faq', to: 'residences#faq', as: :faq
   
     resources :usuarios do
