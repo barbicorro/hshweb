@@ -17,17 +17,25 @@
 				<%end%>
 			</ul>
 			<br><br>
-			<%= form_for [@week,@sale], :url => week_sales_path(@sale) do |f| %>
-				<div class="row mb-2 d-inline-flex">
-					<h5 class="col-3 offset-1"><%= f.label :precioPuja, "Tu puja", class: 'text-white'%></h5>
-					<div class="col-5">
-						<%= f.hidden_field :week_id, value:  @week.id %>
-						<%= f.number_field :precioPuja, class: 'form-control', min: "0",
-						required: true %>
+			<% if current_user.user_type_id == 2 || current_user.user_type_id == 3 %>
+				<% if (@sale.ganadorActual != nil && current_user.id != @sale.ganadorActual) || (@sale.ganadorActual == nil) %>
+					<%= form_for [@week,@sale], :url => week_sales_path(@sale) do |f| %>
+						<div class="row mb-2 d-inline-flex">
+							<h5 class="col-3 offset-1"><%= f.label :precioPuja, "Tu puja", class: 'text-white'%></h5>
+							<div class="col-5">
+								<%= f.hidden_field :week_id, value:  @week.id %>
+								<%= f.number_field :precioPuja, class: 'form-control', min: "0",
+								required: true %>
+							</div>
+							<%= f.submit "Pujar", class: 'btn btn-primary col' %>
+						</div>
+					<%end%>
+				<% elsif current_user.id == @sale.ganadorActual %>
+					<div class="text-white mb-3 col-7 offset-3">
+						<h5>¡Usted va ganando!</h5>
 					</div>
-					<%= f.submit "Pujar", class: 'btn btn-primary col' %>
-				</div>
-			<%end%>
+				<% end %>
+			<% end %>
 			<% if notice %>
 				<div class="alert alert-secondary text-center text-white mb-3 alert-expand-lg bg-dark"><%= notice%> </div>
 			<% end %>
