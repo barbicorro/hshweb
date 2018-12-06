@@ -28,7 +28,7 @@
 		    <%= link_to "Usuarios", usuarios_path, class: "dropdown-item"%>
 		    <%= link_to "Subastas", sales_path, class: "dropdown-item"%>
 		    <%= link_to "Inscripciones", inscriptions_path, class: "dropdown-item"%>
-
+		    <%= link_to "Ayuda", faq_path, class: "dropdown-item"%>
         <% if user_signed_in? %>
          <%= link_to "Usuarios Administradores",  usuario_indexAdmin_path(current_user.id), class: "dropdown-item"%>
          <%end%>
