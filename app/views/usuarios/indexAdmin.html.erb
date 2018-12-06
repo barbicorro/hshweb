@@ -1,0 +1,43 @@
+<br>
+<% if (user_signed_in?) && (current_user.user_type_id == 4) %>
+
+<div class="container-fluid bg-dark pb-4">
+  <div class="text-center">
+      <h2 class="text-white mb-3">Usuarios Administradores</h2>
+  </div><br>
+  <div class="row">
+    <table style="table", class="table table-dark ">
+      <thead>
+        <tr>
+          <th width "60%"> Correo electronico</th>
+          <th width "80%"> Nombre </th>
+          <th width "80%"> Apellido </th>
+
+          <th colspan="2"> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @usuarios.each do |usuario| %>
+          <tr>
+            <% if (usuario.name != 'Osvaldo') && (usuario.user_type_id == 1) %>
+            <td> <%=  link_to usuario.email, usuario_path(usuario) %> </td>
+            <td><%= usuario.name%> </td>
+            <td><%= usuario.lastname%> </td>
+            <td><%= link_to "Borrar", usuario, method: :delete, class: 'btn btn-info btn-danger',
+            data: { confirm: "¿Está seguro de que quiere eliminar a este usuario?" } %> </td>
+          </tr>
+          <% end %>
+
+          <%end%>
+        </tbody>
+      </table>
+      <button class="btn btn-block btn-light col-4 offset-4 mt-3"><%= link_to "Añadir Administrador", new_user_registration_path%></button>
+
+    </div>
+<%else%>
+  <div class="text-white text-center mb-3"> <h5>No deberias estar aqui</h5> </div>
+
+  <button class="btn btn-block btn-light col-4 offset-4 mt-3"> <%= link_to "Volver", root_path %>
+</button>
+</div>
+<%end%>

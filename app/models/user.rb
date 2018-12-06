@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-	default_scope -> { order("Name") }
+	default_scope -> { order("email") }
 	validates :date_venc_month, inclusion: { in: %w(Enero Febrero Marzo Abril Mayo Junio Julio Agosto Septiembre Octubre Noviembre Diciembre),
     message: "%{value} no es un mes valido" }
     validates :date_venc_year, exclusion:{in:0..2018}

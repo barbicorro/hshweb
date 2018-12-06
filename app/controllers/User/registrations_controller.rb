@@ -38,9 +38,15 @@ end
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
+  def destroy
+    super
+      @user =User.find(params[:id])
+      if @user.destroy
+        redirect_to :back ,notice: "el usuario se elimino exitosamente"
+      else
+        redirect_to :back,notice: "Error al eliminarel usuario"
+      end
+    end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign

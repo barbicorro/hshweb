@@ -2,14 +2,16 @@
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 
-# Examples:
-#
-
-
-
 type1=UserType.create({name:'Usuario Administrador'})
 type2=UserType.create({name:'Usuario Premium'})
-type3=UserType.create({name:'Usuario base'})
+type3=UserType.create({name:'Usuario Base'})
+type4=UserType.create({name:'Usuario superAdmin'})
+
+user4= User.create(date_venc_month:"Abril", date_venc_year:"2019",cod:"123", card_Number:"1234567890123456",
+	 name:"Osvaldo",image:"https://schmitman.com/wp-content/uploads/2015/08/homer2-680x380.png",
+	 date_of_birth:"1996-09-17",email:"osvaldo@gmail.com",lastname:"Mantecovich",
+	 password:"123456",password_confirmation:"123456",card_Marca:"visa",user_type_id:"4")
+
 
 user1= User.create(date_venc_month:"Abril", date_venc_year:"2019",cod:"123", card_Number:"1234567890123456",
 	 name:"Tyron",image:"https://upload.wikimedia.org/wikipedia/en/thumb/5/50/Tyrion_Lannister-Peter_Dinklage.jpg/220px-Tyrion_Lannister-Peter_Dinklage.jpg",

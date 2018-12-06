@@ -10,9 +10,10 @@ Rails.application.routes.draw do
     resources :weeks do
     		resource :sales
     end
-
+resources :users
     resources :users do
             resource :sales
+
     end
     resources :weeks do
             resource :inscriptions
@@ -21,7 +22,8 @@ Rails.application.routes.draw do
     resources :inscriptions, only: [:index]
 
     get 'weekList', to: 'weeks#weekList', as: :weekList
-  
-    resources :usuarios
 
+    resources :usuarios do
+        get 'indexAdmin', to: 'usuarios#indexAdmin', as: :indexAdmin
+      end
 end

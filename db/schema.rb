@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20181129135011) do
     t.integer "user_type_id", default: 3, null: false
     t.string "image"
     t.integer "credits", default: 2, null: false
-    t.integer "week1_id"
-    t.integer "week2_id"
+    t.integer "week1_id", default: 0, null: false
+    t.integer "week2_id", default: 0, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
