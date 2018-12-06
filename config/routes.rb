@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :weeks do
     		resource :sales
     end
-resources :users
     resources :users do
             resource :sales
 
@@ -23,7 +22,10 @@ resources :users
 
     get 'weekList', to: 'weeks#weekList', as: :weekList
 
+    get 'faq', to: 'residences#faq', as: :faq
+  
     resources :usuarios do
+        get 'reserveList', to: 'usuarios#reserveList', as: :reserveList
         get 'indexAdmin', to: 'usuarios#indexAdmin', as: :indexAdmin
-      end
+    end
 end

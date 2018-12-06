@@ -17,14 +17,14 @@
 			  <div class="card-header text-center bg-primary"><h5> Datos personales </h5></div>
 			  <div class="card-body">
 			    	<ul class="card-text text-justify">
-							<ul class="card-text text-justify">
+						<ul class="card-text text-justify">
 			    		<li>Nombre: <%=@usuario.name%></li>
 			    		<li>Apellido: <%=@usuario.lastname%></li>
 			    		<li>Edad: <%=Date.today.year - @usuario.date_of_birth.year%></li>
 			    		<li>Fecha de nacimiento: <%=@usuario.date_of_birth%></li>
 			    		<li>Tipo de usuario: <%=UserType.find(@usuario.user_type_id).name%></li>
 							<% if (@usuario.user_type_id !=1) && (@usuario.user_type_id != 4) %>
-							<li>Creditos disponibles: <%=@usuario.credits%></li>
+								<li>Creditos disponibles: <%=@usuario.credits%></li>
 							<%end%>
 			    	</ul>
 		  		</div>
@@ -48,10 +48,10 @@
 		</div>
 
 		<div class="row">
-			<% if (@usuario.id == current_user.id)%>
-			<button class="btn btn-lg btn-block btn-white col-2 offset-3 mt-3"><%= link_to "Editar perfil", edit_user_registration_path%></button>
-			<%end%>
-			<button class="btn btn-lg btn-block btn-white col-2 offset-2 mt-3"><%= link_to "Volver", usuarios_path%></button>
+
+			<button class="btn btn-lg btn-block btn-white col-2 offset-2 mt-3"><%= link_to "Editar perfil", edit_user_registration_path%></button>
+			<button class="btn btn-lg btn-block btn-white col-2 offset-1 mt-3"><%= link_to "Mis reservas",  usuario_reserveList_path(current_user.id)%></button>
+			<button class="btn btn-lg btn-block btn-white col-2 offset-1 mt-3"><%= link_to "Volver", usuarios_path%></button>
 		</div>
 	</div>
 </div>
