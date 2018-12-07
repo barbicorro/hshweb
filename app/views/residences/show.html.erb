@@ -1,11 +1,11 @@
 <div class="container-fluid bg-dark pb-4">
-	<div class="text-center"> 
+	<div class="text-center">
 			<h2 class="text-white mb-3"><%=@residence.title%></h2>
 		</div>
 		<div class="row">
 
 		<img src="<%=@residence.image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-8 offset-2" height="470px" width="300 px">
-		
+
 
 		<div class="card text-white bg-dark col-4 mt-3" >
 		  <div class="card-header text-center bg-primary"><h5>Ubicación</h5></div>
@@ -30,5 +30,5 @@
 
 		<button class="btn btn-lg btn-block btn-white col-2 offset-3 mt-3"><%= link_to "Semanas", residence_weeks_path(@residence)%></button>
 		<button class="btn btn-lg btn-block btn-white col-2 offset-2 mt-3"><%= link_to "Volver", residences_path%></button>
-	</div>	
-</div> 
+	</div>
+</div>
