@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-
+#  get 'newAdmin', to: 'user_registrations#newAdmin', as: :newAdmin
 	root 'residences#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :residences do
@@ -21,9 +21,14 @@ Rails.application.routes.draw do
     resources :inscriptions, only: [:index]
 
     get 'faq', to: 'residences#faq', as: :faq
-  
+
     resources :usuarios do
         get 'reserveList', to: 'usuarios#reserveList', as: :reserveList
         get 'indexAdmin', to: 'usuarios#indexAdmin', as: :indexAdmin
+        get 'destroy_user_registration', to: 'devise/registrations#destroy', as: :destroy_user_registration
+
     end
+    get 'newAdmin', to: 'usuarios#newAdmin', as: :newAdmin
+
+
 end

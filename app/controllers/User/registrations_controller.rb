@@ -6,10 +6,7 @@ class User::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-#def new
-  #   @user=User.new
- #  end
-
+  
   # POST /resource
   def create
    super
@@ -21,7 +18,6 @@ class User::RegistrationsController < Devise::RegistrationsController
     else
       render :new
     end
-  end
 
 
 
