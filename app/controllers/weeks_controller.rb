@@ -8,11 +8,15 @@ class WeeksController < ApplicationController
 	def update
 		@week= Week.find(params[:id])
 		if @week.update(update_params)
-			if (params[:week][:status_id].to_i == 2) #pasar a estado subasta
+			if (params[:week][:status_id].to_i == 1) #no la puede reservar, mantiene el estado
+				redirect_to residences_path , notice: "Ya tienes una reserva en la semana deseada"
+			elsif (params[:week][:status_id].to_i == 2) #pasar a estado subasta
        			redirect_to edit_week_sales_path(@week) , notice: "La subasta ha iniciado"
 	    	elsif (params[:week][:status_id].to_i == 3) #pasar a estado reservada
 	     		@residence = Residence.find(@week.residence_id)
-	     		@week.sale.destroy
+	     		if @week.sale != nil
+	     			@week.sale.destroy
+	     		end
 	     		@user = User.find(params[:week][:user_id])
 	     		if (@user.week1_id == nil)
 	     			@user.week1_id = @week.id
@@ -21,10 +25,14 @@ class WeeksController < ApplicationController
 	     		end
 	     		@user.credits -= 1
 	     		@user.save
-	       		redirect_to residence_weeks_path(@residence) , notice: "La subasta ha finalizado"
-	       	elsif (params[:week][:status_id].to_i == 4)
+	     		if (current_user.user_type_id == 1 || current_user.user_type_id == 4)
+					redirect_to residence_weeks_path(@residence) , notice: "La subasta ha finalizado"
+				elsif (current_user.user_type_id == 2 || current_user.user_type_id == 3)
+					redirect_to user_reserveList_path(current_user.id), notice: "Reserva exitosa"
+				end
+	       	elsif (params[:week][:status_id].to_i == 4) #pasar a hotsale
 	       		@residence = Residence.find(@week.residence_id)
-	     	  	redirect_to residence_weeks_path(@residence) , notice: "La subasta ha finalizado"
+	     	  	redirect_to user_reserveList_path(current_user.id), notice: "La residencia paso a estar en HotSale"
 	     	else
 	     		@residence = Residence.find(@week.residence_id)
 	     	  	redirect_to residence_weeks_path(@residence) , notice: "Ha habido algún problema"
@@ -42,7 +50,11 @@ class WeeksController < ApplicationController
 	end
 
 	def edit
-		@week= Week.find(params[:id])
+		if (user_signed_in?)
+	      @week= Week.find(params[:id])
+	    else
+	      redirect_to new_user_session_path
+	    end	
 	end
 
 	def weekList
@@ -52,4 +64,5 @@ class WeeksController < ApplicationController
 	def update_params
 		params.require(:week).permit(:status_id,:user_id)
 	end
+
 end

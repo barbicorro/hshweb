@@ -1,38 +1,90 @@
 <div class="container-fluid bg-dark pb-4">
 	<br><br><br><br><br><br><br><br>
 	<div class="container mb-5">
-	<% if (@week.status_id != 2)%>
-		<h3 class="text-white mb-3">La semana <%= @week.period%> será puesta en subasta por 3 días a partir de hoy</h3> 
-		<%= form_for @week do |f|%>
-		<div class "form-group">
-			<%= f.hidden_field :status_id, value: "2" %>
-			<%= f.hidden_field :user_id, value: "nil" %>
-			<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
-		</div>
-		<%end%>
+	<% if current_user.user_type_id == 1 || current_user.user_type_id == 4 %>
+		<% if (@week.status_id == 1 && @week.sale == nil)%>
+			<h3 class="text-white mb-3">La semana <%= @week.period.strftime('%d/%m/%Y') %> será puesta en subasta por 3 días a partir de hoy</h3> 
+			<%= form_for @week do |f|%>
+				<div class "form-group">
+					<%= f.hidden_field :status_id, value: "2" %>
+					<%= f.hidden_field :user_id, value: "nil" %>
+					<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
+				</div>
+			<%end%>
 		<%else%>
-			<h3 class="text-white mb-3">La subasta de la semana <%= @week.period%> finalizará y será adjudicada a un usuario</h3> 
+			<h3 class="text-white mb-3">La subasta de la semana <%= @week.period.strftime('%d/%m/%Y')%> finalizará y será adjudicada a un usuario</h3> 
 			<h6 class="text-white mb-3">En caso de que el usuario no tenga créditos disponibles la residencia pasará a HotSale</h6> 
 			<%= form_for @week do |f|%>
-			<div class "form-group">
-				<%= f.hidden_field :user_id, value:  @week.sale.ganadorActual.to_s %>
-				<% u = User.find(@week.sale.ganadorActual) %>
-				<% if (u.credits > 0) %>
-					<% w1 = u.week1_id ? Week.find(u.week1_id) : nil %>
-					<% w2 = u.week2_id ? Week.find(u.week2_id) : nil %>
-					<% if (w1 == nil) %>
-						<%= f.hidden_field :status_id, value: "3" %>
-					<% elsif (w1.period != @week.period)%>
-						<%= f.hidden_field :status_id, value: "3" %>
+				<div class "form-group">
+					<% u = User.find(@week.sale.ganadorActual) %>
+					<% if (u.credits > 0) %>
+						<%= f.hidden_field :user_id, value:  @week.sale.ganadorActual.to_s %>
+						<% w1 = u.week1_id ? Week.find(u.week1_id) : nil %>
+						<% w2 = u.week2_id ? Week.find(u.week2_id) : nil %>
+						<% if (w1 == nil) #primer semana vacia %>
+							<%= f.hidden_field :status_id, value: "3" %>
+						<% elsif (w1.period != @week.period) #primer semana ocupada y con diferente fecha%>
+							<%= f.hidden_field :status_id, value: "3" %>
+						<% else #las dos semanas ocupadas o iguales a la fecha que gana%>
+							<%= f.hidden_field :status_id, value: "4" %>
+						<% end %>
 					<% else %>
+						<%= f.hidden_field :user_id, value: "nil" %>
 						<%= f.hidden_field :status_id, value: "4" %>
 					<% end %>
-				<% else %>
-					<%= f.hidden_field :status_id, value: "4" %>
-				<% end %>
-				<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
-			</div>
+					<%= f.submit "Aceptar", class: 'btn btn-primary mt-3' %>
+				</div>
 			<%end%>
 		<%end%>
+	<% elsif current_user.user_type_id == 2 && current_user.credits > 0 %>
+		<% if (@week.status_id == 1 || @week.status_id == 4)%>
+			<h3 class="text-white mb-3 text-center">¿Seguro que desea reservar la semana <%= @week.period.strftime('%d/%m/%Y') %> de la residencia <%= Residence.find(@week.residence_id).title %>? </h3>
+			<div class="row mt-5 justify-content-center"> 
+				<%= form_for @week do |f|%>
+					<div class "form-group">
+						<% u = User.find(current_user.id) %>
+						<% w1 = u.week1_id ? Week.find(u.week1_id) : nil %>
+						<% w2 = u.week2_id ? Week.find(u.week2_id) : nil %>
+						<% if (w1 == nil || (w1 != nil && w1.period != @week.period)) %>
+							<%= f.hidden_field :user_id, value: u.id %>
+							<%= f.hidden_field :status_id, value: "3" %>
+						<% else %>
+							<%= f.hidden_field :user_id, value: "nil" %>
+							<%= f.hidden_field :status_id, value: "1" %>
+						<% end %>
+						<%= f.submit "Aceptar", class: 'btn btn-primary' %>
+					</div>
+				<%end%>
+				<button class="btn btn-light offset-1"><%= link_to "Cancelar", residences_path%></button>
+			</div>
+		<% end %>
+	<% elsif current_user.user_type_id == 3 && current_user.credits > 0 %>
+		<% if (@week.status_id == 4)%>
+			<h3 class="text-white mb-3 text-center">¿Seguro que desea reservar la semana <%= @week.period.strftime('%d/%m/%Y') %> de la residencia <%= Residence.find(@week.residence_id).title %>? </h3> 
+			<div class="row mt-5 justify-content-center">
+				<%= form_for @week do |f|%>
+					<div class "form-group">
+						<% u = User.find(current_user.id) %>
+						<% w1 = u.week1_id ? Week.find(u.week1_id) : nil %>
+						<% w2 = u.week2_id ? Week.find(u.week2_id) : nil %>
+						<% if (w1 == nil || (w1 != nil && w1.period != @week.period)) %>
+							<%= f.hidden_field :user_id, value: u.id %>
+							<%= f.hidden_field :status_id, value: "3" %>
+						<% else %>
+							<%= f.hidden_field :user_id, value: "nil" %>
+							<%= f.hidden_field :status_id, value: "1" %>
+						<% end %>
+						<%= f.submit "Aceptar", class: 'btn btn-primary' %>
+					</div>
+				<%end%>
+				<button class="btn btn-light offset-1"><%= link_to "Cancelar", residences_path%></button>
+			</div>
+		<% end %>
+	<% elsif ((current_user.user_type_id == 2 || current_user.user_type_id == 3) && current_user.credits == 0) %>
+		<h3 class="text-white text-center mb-3">No dispones de creditos disponibles para realizar esta reserva</h3> 
+		<div class="row mt-5 justify-content-center">
+			<button class="btn btn-light"><%= link_to "Volver", residences_path%></button>
+		</div>
+	<% end %>
 	</div>
 </div>

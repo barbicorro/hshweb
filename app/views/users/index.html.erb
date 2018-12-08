@@ -22,11 +22,7 @@
                 <% @usuarios.each do |usuario| %>
                   <tr>
                     <% if (usuario.user_type_id == 2) || (usuario.user_type_id == 3) %>
-<<<<<<< HEAD:app/views/usuarios/index.html.erb
-                            <td> <%= link_to usuario.email, usuario_path(usuario)%> </td>
-=======
                     <td> <%= link_to usuario.email, user_path(usuario)%> </td>
->>>>>>> 634ba260c0357c1df66006b236274100ed3b6d45:app/views/users/index.html.erb
                             <td> <%= usuario.name %> </td>
                             <td> <%= usuario.lastname %> </td>
                             <td><%= UserType.find(usuario.user_type_id).name %> </td>

@@ -23,7 +23,7 @@
               <%elsif (week.status_id == 2) && ((week.sale.fechaFin >= Date.today) || (week.sale.fechaInicio <= Date.today))%>
                   <td><%= link_to "Ver subasta", edit_week_sales_path(week), class: 'btn btn-info btn-primary'%></td>
               <% elsif (week.status_id == 3) %>
-                  <td><%= link_to "Ver usuario", usuario_path(User.find(week.user_id)), class: 'btn btn-primary'%></td>
+                  <td><%= link_to "Ver usuario", user_path(User.find(week.user_id)), class: 'btn btn-primary'%></td>
               <% end %>
             </tr>
           <% end %>
