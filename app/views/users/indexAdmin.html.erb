@@ -20,10 +20,10 @@
         <% @usuarios.each do |usuario| %>
           <tr>
             <% if (usuario.name != 'Osvaldo') && (usuario.user_type_id == 1) %>
-            <td> <%=  link_to usuario.email, usuario_path(usuario) %> </td>
+            <td> <%=  link_to usuario.email, user_path(usuario) %> </td>
             <td><%= usuario.name%> </td>
             <td><%= usuario.lastname%> </td>
-            <td><%= link_to "Borrar", destroy_user_registration_path(usuario), class: 'btn btn-info btn-danger',
+            <td><%= link_to "Borrar", usuario, method: :delete, class: 'btn btn-info btn-danger',
             data: { confirm: "¿Está seguro de que quiere eliminar a este usuario?" } %> </td>
           </tr>
           <% end %>
@@ -31,8 +31,7 @@
           <%end%>
         </tbody>
       </table>
-      <button class="btn btn-block btn-light col-4 offset-4 mt-3"><%= link_to "Añadir Administrador",
-      newAdmin_path%></button>
+
 
     </div>
 <%else%>
