@@ -18,14 +18,15 @@
                 </tr>
               </thead>
               <tbody>
+                <%@hay_usuario=0%>
                 <% @usuarios.each do |usuario| %>
                   <tr>
                     <% if (usuario.user_type_id == 2) || (usuario.user_type_id == 3) %>
-                    <td> <%= link_to usuario.email, usuario_path(usuario)%> </td>
+                            <td> <%= link_to usuario.email, usuario_path(usuario)%> </td>
                             <td> <%= usuario.name %> </td>
                             <td> <%= usuario.lastname %> </td>
-
                             <td><%= UserType.find(usuario.user_type_id).name %> </td>
+                            <%@hay_usuario=1%>
                             <% if (usuario.user_type_id == 2)%>
                                   <td><%= link_to "Cambiar a Base", :back, class: 'btn btn-info btn-warning'%> </td>
                             <% elsif (usuario.user_type_id == 3)%>
@@ -34,6 +35,9 @@
                       <%end%>
                   </tr>
                   <%end%>
+                   <% if (@hay_usuario==0) %>
+                     <h3 class="text-white mb-3">Actualmente no hay clientes registrados</h3>
+                    <% end %>
                 </tbody>
               </table>
             </div>

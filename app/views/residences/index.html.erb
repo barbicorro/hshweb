@@ -1,7 +1,7 @@
 <div class="container-fluid bg-dark pb-4">
   <div class="text-center">
     <br>
-      <% if current_user.id == 1 || current_user.id == 4 %>
+      <% if current_user.user_type_id == 1 || current_user.user_type_id == 4 %>
         <h2 class="text-white mb-3"> Residencias </h2>
       <% else %>
         <h2 class="text-white mb-3">Encontrá tu residencia ideal </h2>
@@ -55,7 +55,7 @@
         <% if (params[:term] != nil) %>
           <% w = residence.weeks.first %>
           <td><%= w.period.strftime('%d/%m/%Y') %> </td>
-          <% if (current_user.id == 1 || current_user.id == 4) %>
+          <% if (current_user.user_type_id== 1 || current_user.user_type_id == 4) %>
             <% if (w.status_id == 1)  %>
               <td><%= link_to "Configurar",new_week_sales_path(w), class: 'btn btn-primary'%> </td>
             <% elsif (w.status_id == 3) %>
@@ -64,7 +64,7 @@
               <td> En HotSale </td>
             <%end%>
 
-          <% elsif (current_user.id == 2) %>
+          <% elsif (current_user.user_type_id == 2) %>
               <% if (w.status_id == 1)  %>
                 <td><%= link_to "Reservar", class: 'btn btn-primary'%> </td>
               <% elsif (w.status_id == 3) %>
@@ -73,7 +73,7 @@
                 <td> <%= link_to "Reservar", class: 'btn btn-primary'%> </td>
               <%end%>
 
-          <% elsif (current_user.id == 3) %>
+          <% elsif (current_user.user_type_id == 3) %>
               <% if (w.status_id == 1)  %>
                 <td><%= link_to "Inscribirse a subasta", new_week_inscriptions_path(w), class: 'btn btn-primary'%> </td>
               <% elsif (w.status_id == 3) %>
@@ -82,7 +82,7 @@
                 <td> <%= link_to "Reservar", class: 'btn btn-primary'%> </td>
              <%end%>
           <% end %>
-       <% elsif current_user.id == 1 || current_user.id == 4 %>
+       <% elsif current_user.user_type_id == 1 || current_user.user_type_id == 4 %>
           <td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-primary'%> </td>
           <td><%= link_to "Borrar", residence, method: :delete, class: 'btn btn-info btn-danger',
           data: { confirm: "¿Está seguro de que quiere eliminar la residencia?" } %> </td>  
@@ -91,7 +91,7 @@
       <% end %>
     </tbody>
   </table>
-<% if current_user.id == 1 || current_user.id == 4 %>
+<% if (current_user.user_type_id == 1) || (current_user.user_type_id == 4) %>
 <button class="btn btn-block btn-light col-4 offset-4 mt-3"><%= link_to "Añadir residencia", new_residence_path%></button>
 <% end %>
 <% if params[:term] != nil %>

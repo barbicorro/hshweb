@@ -9,6 +9,7 @@
         <tr>
           <th width "80%"> Residencia</th>
           <th width "80%"> Semana</th>
+          <th width "80%"> Estado</th>
           <th width "80%"> Precio Base</th>
           <th width "80%"> Fecha de Inicio</th>
           <th width "80%"> Fecha de Fin</th>
@@ -17,13 +18,16 @@
         </tr>
       </thead>
       <tbody>
+      <%@tiene_insc=0%>
       <% if (current_user.user_type_id == 2)  || (current_user.user_type_id == 3) %>
-        <% if (current_user.inscriptions != nil) %>
           <% current_user.inscriptions.each do |inscription| %>
             <tr>
             <% if (inscription.week != nil) %>
+             <%@tiene_insc=1%>
               <td> <%= Residence.find(inscription.week.residence_id).title%> </td>
               <td><%= inscription.week.period.strftime('%d/%m/%Y') %> </td>
+              <% #if (inscription.week.status_id ==1) && () %>
+              <td><%= Status.find(inscription.week.status_id).name%> </td>
               <% if (inscription.week.sale != nil) %>
                 <td><%= inscription.week.sale.precioBase %> </td>
                 <td><%= inscription.week.sale.fechaInicio %> </td>
@@ -39,8 +43,11 @@
 
             </tr>
           <% end %>
+          <% end %>
+         <% if (@tiene_insc==0) %>
+           <h3 class="text-white mb-3">Actualmente no se ha inscripto a ninguna subasta</h3>
         <% end %>
-       <% end %>
+       
 
       </tbody>
     </table>
