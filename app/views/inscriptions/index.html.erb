@@ -1,3 +1,4 @@
+
 <div class="container-fluid bg-dark pb-4">
   <div class="text-center">
     <h2 class="text-white mb-3">Inscripciones</h2>
@@ -10,7 +11,7 @@
           <th width "80%"> Residencia</th>
           <th width "80%"> Semana</th>
           <th width "80%"> Estado</th>
-          <th width "80%"> Precio Base</th>
+          <th width "80%"> Precio Actual</th>
           <th width "80%"> Fecha de Inicio</th>
           <th width "80%"> Fecha de Fin</th>
           <th width "80%"> Acciones </th>
@@ -19,23 +20,33 @@
       </thead>
       <tbody>
       <%@tiene_insc=0%>
-      <% if (current_user.user_type_id == 2)  || (current_user.user_type_id == 3) %>
+      <% if (user_signed_in?) && ((current_user.user_type_id == 2)  || (current_user.user_type_id == 3)) %>
           <% current_user.inscriptions.each do |inscription| %>
             <tr>
-            <% if (inscription.week != nil) %>
+            <% w=inscription.week %>
+            <% if (w != nil) %>
              <%@tiene_insc=1%>
-              <td> <%= Residence.find(inscription.week.residence_id).title%> </td>
-              <td><%= inscription.week.period.strftime('%d/%m/%Y') %> </td>
-              <% #if (inscription.week.status_id ==1) && () %>
-              <td><%= Status.find(inscription.week.status_id).name%> </td>
-              <% if (inscription.week.sale != nil) %>
-                <td><%= inscription.week.sale.precioBase %> </td>
-                <td><%= inscription.week.sale.fechaInicio %> </td>
-                <td><%= inscription.week.sale.fechaFin %> </td>
+              <td> <%= Residence.find(w.residence_id).title%> </td>
+              <td><%= w.period.strftime('%d/%m/%Y') %> </td>
+              <% if (w.status_id == 1 && (w.sale == nil))  %>
+                  <td> Esperando a que se configure la subasta </td>
+                <% elsif (w.status_id == 1) && (w.sale != nil) %>
+                    <td> Esperando a que inicie la subasta </td>
+                  <%elsif (w.status_id == 2) && ((w.sale.fechaFin >= Date.today) || (w.sale.fechaInicio <= Date.today))%>
+                      <td> Subasta iniciada </td>
+                    <% elsif (w.status_id == 3) %>
+                        <td> Semana ya reservada </td>
+                      <% elsif (w.status_id == 4) %>
+                          <td> Semana en HotSale </td>
+                        <%end%>
+              <% if (w.sale != nil) %>
+                <td><%= w.sale.precioPuja %> </td>
+                <td><%= w.sale.fechaInicio %> </td>
+                <td><%= w.sale.fechaFin %> </td>
 
-                <%if (inscription.week.status_id == 2) && ((inscription.week.sale.fechaFin >= Date.today) || (inscription.week.sale.fechaInicio <= Date.today))%>
+                <%if (w.status_id == 2) && ((w.sale.fechaFin >= Date.today) || (w.sale.fechaInicio <= Date.today))%>
 
-                      <td><%= link_to "Ver subasta", edit_week_sales_path(inscription.week), class: 'btn btn-info btn-primary'%></td>
+                      <td><%= link_to "Ver subasta", edit_week_sales_path(w), class: 'btn btn-info btn-primary'%></td>
 
                 <% end %>
               <% end %>
@@ -43,8 +54,10 @@
 
             </tr>
           <% end %>
+          <% else %>
+            <div class="text-white text-center mb-3"> <h5>No deberias estar aqui</h5> </div>
           <% end %>
-         <% if (@tiene_insc==0) %>
+         <% if (@tiene_insc==0) && (user_signed_in?) && ((current_user.user_type_id == 2)  || (current_user.user_type_id == 3)) %>
            <h3 class="text-white mb-3">Actualmente no se ha inscripto a ninguna subasta</h3>
         <% end %>
        
