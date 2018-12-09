@@ -1,7 +1,14 @@
 
 <br><br>
-<h3 class="text-white text-center mb-3">¿Seguro que quiere inscribirse a la subasta ?</h3>
-
+<% if (user_signed_in?) %>
+	<% if (current_user.user_type_id == 3)%>
+		<h3 class="text-white text-center mb-3">¿Seguro que quiere inscribirse a la subasta?</h3>
+	  <% elsif (current_user.user_type_id == 2)%>
+		  <h3 class="text-white text-center mb-3">¿Seguro que quiere participar de la subasta?</h3>
+	  <% end %>
+	  <% else %>
+	     <% redirect_to new_user_session_path %>
+	     <% end %>
 <%= form_for [@week,@inscription] do |f|%>
 	<div class "form-group">
 		<%= f.hidden_field :week_id, value:  @week.id.to_s %>

@@ -63,7 +63,11 @@
               <% end %>
              <% end %>
                <%if (@inscrip==1) %>
-               <td><%= link_to "Participar", edit_week_sales_path(week), class: 'btn btn-primary'%></td>
+                 <% if (current_user.credits > 0) %>
+                    <td><%= link_to "Participar", new_week_inscriptions_path(week), class: 'btn btn-primary'%></td>
+                    <% else %>
+                      <td> Sin créditos </td>
+                    <% end %>
               <% end %>
               <% end %>
 
