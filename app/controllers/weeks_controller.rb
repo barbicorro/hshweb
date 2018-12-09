@@ -5,6 +5,14 @@ class WeeksController < ApplicationController
 		redirect_to residence_path(@residence)
 	end
 
+	def cancel
+		if (user_signed_in?)
+	      @week= Week.find(params[:week_id])
+	    else
+	      redirect_to new_user_session_path
+	    end	
+	end
+
 	def update
 		@week= Week.find(params[:id])
 		if @week.update(update_params)
@@ -15,6 +23,7 @@ class WeeksController < ApplicationController
 	    	elsif (params[:week][:status_id].to_i == 3) #pasar a estado reservada
 	     		@residence = Residence.find(@week.residence_id)
 	     		if @week.sale != nil
+	     			@week.sale_id = nil
 	     			@week.sale.destroy
 	     		end
 	     		@user = User.find(params[:week][:user_id])
@@ -31,8 +40,29 @@ class WeeksController < ApplicationController
 					redirect_to user_reserveList_path(current_user.id), notice: "Reserva exitosa"
 				end
 	       	elsif (params[:week][:status_id].to_i == 4) #pasar a hotsale
-	       		@residence = Residence.find(@week.residence_id)
-	     	  	redirect_to user_reserveList_path(current_user.id), notice: "La residencia paso a estar en HotSale"
+	       		if @week.sale != nil
+	     			@week.sale_id = nil
+	     			@week.sale.destroy
+	     		end
+	       		if (current_user.user_type_id == 2 || current_user.user_type_id == 3)
+		       		@week.user_id = nil
+		       		@week.save
+		       		@user = current_user
+		       		if (@user.week1_id == @week.id && @user.week2_id != nil)
+		     			@user.week1_id = @user.week2_id
+		     			@user.week2_id = nil
+		     		elsif (@user.week1_id == @week.id && @user.week2_id == nil)
+		     			@user.week1_id = nil
+		     		elsif (@user.week2_id == @week.id)
+		     			@user.week2_id = nil
+		     		end
+		       		@user.credits += 1
+		       		@user.save
+		       		redirect_to user_reserveList_path(current_user.id), notice: "Cancelación exitosa. Le ha sido devuelto 1 crédito."
+	       		elsif (current_user.user_type_id == 1 || current_user.user_type_id == 4)
+	       			@residence = Residence.find(@week.residence_id)
+	     	  		redirect_to user_reserveList_path(current_user.id), notice: "La residencia paso a estar en HotSale"
+	     	  	end
 	     	else
 	     		@residence = Residence.find(@week.residence_id)
 	     	  	redirect_to residence_weeks_path(@residence) , notice: "Ha habido algún problema"

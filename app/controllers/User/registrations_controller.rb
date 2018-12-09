@@ -35,12 +35,11 @@ end
 
   # DELETE /resource
   def destroy
-    super
       @user =User.find(params[:id])
       if @user.destroy
-        redirect_to :back ,notice: "el usuario se elimino exitosamente"
+        redirect_to root_path,notice: "La cuenta ha sido eliminada exitosamente"
       else
-        redirect_to :back,notice: "Error al eliminarel usuario"
+        redirect_to root_path,notice: "Error al eliminar cuenta"
       end
     end
 

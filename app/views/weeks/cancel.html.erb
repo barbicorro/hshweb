@@ -1,0 +1,15 @@
+<div class="container-fluid bg-dark pb-4">
+	<br><br><br><br><br><br><br><br>
+	<div class="container mb-5">
+	<h3 class="text-white text-center mb-3">¿Seguro que desea cancelar su reserva de la semana <b><%= @week.period.strftime('%d/%m/%Y') %></b> de la residencia <b><%= Residence.find(@week.residence_id).title%></b>?</h3>
+	<div class="row mt-5 justify-content-center"> 
+		<%= form_for @week, :method => :PUT do |f| %>
+			<% u = User.find(current_user.id) %>
+			<%= f.hidden_field :user_id, value: "nil" %>
+			<%= f.hidden_field :status_id, value: "4" %>
+			<%= f.submit "Aceptar", class: 'btn btn-primary' %>
+		<% end %>
+		<button class="btn btn-light offset-1"><%= link_to "Volver", user_reserveList_path(current_user.id)%></button>
+	</div>
+	</div>
+</div>

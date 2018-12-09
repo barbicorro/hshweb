@@ -130,7 +130,7 @@
                       <% end %>
                       <%  if(@user.user_type_id !=4) %>
                     <div class="bg-dark"><br /></div>
-                    <p>No estas contento? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Está seguro de que quiere dejarnos?" }, method: :delete %></p>
+                    <p>No estas contento? <%= link_to "Cancelar mi cuenta", super_user_destroy_path(resource_name), data: { confirm: "¿Está seguro de que quiere dejarnos?" }, method: :delete %></p>
                   </div>
 <%end%>
               </div>
