@@ -3,7 +3,7 @@
 	<div class="container mb-5">
 	<% if current_user.user_type_id == 1 || current_user.user_type_id == 4 %>
 		<% if (@week.status_id == 1 && @week.sale == nil)%>
-			<h3 class="text-white mb-3">La semana <%= @week.period.strftime('%d/%m/%Y') %> será puesta en subasta por 3 días a partir de hoy</h3> 
+			<h3 class="text-white mb-3">La semana <b><%= @week.period.strftime('%d/%m/%Y') %></b> será puesta en subasta por 3 días a partir de hoy</h3> 
 			<%= form_for @week do |f|%>
 				<div class "form-group">
 					<%= f.hidden_field :status_id, value: "2" %>
@@ -12,7 +12,7 @@
 				</div>
 			<%end%>
 		<%else%>
-			<h3 class="text-white mb-3">La subasta de la semana <%= @week.period.strftime('%d/%m/%Y')%> finalizará y será adjudicada a un usuario</h3> 
+			<h3 class="text-white mb-3">La subasta de la semana <b><%= @week.period.strftime('%d/%m/%Y')%></b> finalizará y será adjudicada a un usuario</h3> 
 			<h6 class="text-white mb-3">En caso de que el usuario no tenga créditos disponibles la residencia pasará a HotSale</h6> 
 			<%= form_for @week do |f|%>
 				<div class "form-group">
@@ -38,7 +38,7 @@
 		<%end%>
 	<% elsif current_user.user_type_id == 2 && current_user.credits > 0 %>
 		<% if (@week.status_id == 1 || @week.status_id == 4)%>
-			<h3 class="text-white mb-3 text-center">¿Seguro que desea reservar la semana <%= @week.period.strftime('%d/%m/%Y') %> de la residencia <%= Residence.find(@week.residence_id).title %>? </h3>
+			<h3 class="text-white mb-3 text-center">¿Seguro que desea reservar la semana <b><%= @week.period.strftime('%d/%m/%Y') %></b> de la residencia <b><%= Residence.find(@week.residence_id).title %></b>? </h3>
 			<div class="row mt-5 justify-content-center"> 
 				<%= form_for @week do |f|%>
 					<div class "form-group">
@@ -60,7 +60,7 @@
 		<% end %>
 	<% elsif current_user.user_type_id == 3 && current_user.credits > 0 %>
 		<% if (@week.status_id == 4)%>
-			<h3 class="text-white mb-3 text-center">¿Seguro que desea reservar la semana <%= @week.period.strftime('%d/%m/%Y') %> de la residencia <%= Residence.find(@week.residence_id).title %>? </h3> 
+			<h3 class="text-white mb-3 text-center">¿Seguro que desea reservar la semana <b><%= @week.period.strftime('%d/%m/%Y') %></b> de la residencia <b><%= Residence.find(@week.residence_id).title %></b>? </h3> 
 			<div class="row mt-5 justify-content-center">
 				<%= form_for @week do |f|%>
 					<div class "form-group">

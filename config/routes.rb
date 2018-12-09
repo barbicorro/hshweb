@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+    
 	root 'residences#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
     resources :residences do
@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :weeks do
     		resource :sales
     end
+    devise_for :users
+    match 'users/id' => 'users#destroy', :via => :delete, :as => :super_user_destroy
 
     resources :users do
             resource :sales
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
     end
     resources :weeks do
             resource :inscriptions
+            get 'cancel', to: 'weeks#cancel', as: :cancel
     end
     resources :sales, only: [:index]
     resources :inscriptions, only: [:index]

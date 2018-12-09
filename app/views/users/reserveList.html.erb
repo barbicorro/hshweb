@@ -4,48 +4,55 @@
     <h2 class="text-white mb-3">Reservas actuales</h2>
   </div>
   <div class="row">
-    <table style="table", class="table table-dark">
+    <table class="table table-dark">
       <thead>
         <tr>
-          <th width "80%">#</th>
-          <th width "80%"> Residencia</th>
-          <th width "80%"> Semana</th>
-          <th width "80%"> Acciones </th>
-          <th colspan="4"> </th>
+          <th>#</th>
+          <th> Residencia</th>
+          <th> Semana</th>
+          <th class="text-center"> Acciones </th>
         </tr>
       </thead>
       <tbody>
       <% if (current_user.user_type_id == 2)  || (current_user.user_type_id == 3)%>
         <% if (@week1 != nil) %>
             <tr>
-            <th scope="row">1</th>
+            <td>1</td>
               <% r1 = Residence.find(@week1.residence_id) %>
               <td><%= r1.title%></td>
               <td><%= @week1.period.strftime('%d/%m/%Y') %></td>
-              <td><%= link_to "Ver residencia", residence_path(r1.id), class: 'btn btn-info btn-primary'%></td>
+
+              <td class="text-center"><%= link_to "Ver residencia", residence_path(r1.id), class: 'btn btn-info btn-primary mr-2'%>
+              <%= link_to "Cancelar reserva", week_cancel_path(@week1), class: 'btn btn-info btn-danger'%>   
+            </td>
+            
             </tr>
         <% else %>
           <tr>
-            <th scope="row">1</th>
+            <td>1</td>
             <td> -   -   - </td>
             <td> -   -   - </td>
-            <td> Credito disponible</td>
+            <td class="text-center"> Credito disponible</td>
           </tr>
         <% end %>
         <% if (@week2 != nil) %>
           <tr>
-          <th scope="row">2</th>
+          <td>2</td>
             <% r2 = Residence.find(@week2.residence_id) %>
             <td><%= r2.title%></td>
             <td><%= @week2.period.strftime('%d/%m/%Y') %></td>
-            <td><%= link_to "Ver residencia", residence_path(r2.id), class: 'btn btn-info btn-primary'%></td>
+            
+            <td class="text-center"><%= link_to "Ver residencia", residence_path(r2.id), class: 'btn btn-info btn-primary mr-2'%>
+              <%= link_to "Cancelar reserva", week_cancel_path(@week2), class: 'btn btn-info btn-danger'%>   
+            </td>
+            
           </tr>
         <% else %>
           <tr>
-            <th scope="row">2</th>
+            <td>2</td>
             <td> -   -   - </td>
             <td> -   -   - </td>
-            <td> Credito disponible</td>
+            <td class="text-center"> Credito disponible</td>
           </tr>
         <% end %>
        <% end %>
