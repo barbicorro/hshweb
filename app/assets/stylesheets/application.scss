@@ -12,5 +12,18 @@
  *
  *=require_tree
 *=require_self
+*= require bootstrap-datepicker
  */
   @import "bootstrap";
+  
+
+body {background-color: #343a40;}
+
+.time-select {
+  width: 10%;
+  display: inline;
+}
+
+#dropColor{    
+	background-color: #acb0b7;
+ }

@@ -1,10 +1,10 @@
 <div class="container-fluid bg-dark pb-4">
-  <div class="text-center"> 
+  <div class="text-center">
       <h2 class="text-white mb-3">Residencias</h2>
-      <div class="alert text-white mb-3 alert-expand-lg bg-dark"> 
-      <%= notice%>
+    
       </div>
   </div>
+
   <div class="row">
     <table style="table", class="table table-dark">
       <thead>
@@ -19,13 +19,14 @@
       </thead>
       <tbody>
         <% @residences.each do |residence| %>
+
           <tr>
             <td> <%= link_to residence.title, residence_path(residence)%> </td>
             <td><%= residence.locality %> </td>
             <td><%= residence.province %> </td>
             <td><%= residence.country %> </td>
             <td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-primary'%> </td>
-            <td><%= link_to "Borrar", residence, method: :delete, class: 'btn btn-info btn-danger', 
+            <td><%= link_to "Borrar", residence, method: :delete, class: 'btn btn-info btn-danger',
             data: { confirm: "¿Está seguro de que quiere eliminar la residencia?" } %> </td>
 
           </tr>

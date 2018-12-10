@@ -13,4 +13,5 @@ class UsuariosController < ApplicationController
 		@week1 = @usuario.week1_id ? Week.find(@usuario.week1_id) : nil
 		@week2 = @usuario.week2_id ? Week.find(@usuario.week2_id) : nil
 	end
+
 end

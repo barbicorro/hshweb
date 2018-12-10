@@ -1,0 +1,28 @@
+<div class="container-fluid bg-dark pb-4">
+    <h2 class=" text-center text-white mb-3">Iniciar sesion</h2>
+
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    
+
+
+  <div class="form-inputs col-4 text-white offset-4">
+  <%= f.label :email, "Correo electronico"%>
+    <%= f.email_field :email, class: 'form-control mb-3', required: true %>
+
+    <div class="bg-dark"><br /></div>
+
+    <%= f.label :password, "Contraseña"%>
+    <%= f.password_field :password,class: 'form-control mb-3',
+                required: true  %>
+    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+
+<%= f.button :submit, "Entrar" %>
+
+<div class="bg-dark"><br /></div>
+
+<%= render "users/shared/links" %>
+  </div>
+
+
+<% end %>
+</div>

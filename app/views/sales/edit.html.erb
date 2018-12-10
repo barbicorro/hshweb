@@ -1,0 +1,43 @@
+<div class="container-fluid bg-dark pb-4">
+	<div class="text-center"> 
+		<h2 class="text-white mb-3">Subasta de la semana <%=@week.period.strftime('%d-%m-%Y')%></h2>
+	</div>
+	<br><br>
+	<div class="row">
+		<img src="<%=Residence.find(@week.residence_id).image%>" class="style_image shadow p-3 mb-5 bg-secondary rounded col-4 offset-1" height="400px" width="300 px">
+		<div class="text-white mb-3 ml-5" >
+		<br><br><br>
+			<h2>Residencia: <%=Residence.find(@week.residence_id).title%></h2>
+			<br>
+			<ul>
+				<h5><li>Precio inicial: $<%=@sale.precioBase%></li></h5>
+				<h5><li>Precio actual: $<%=@sale.precioPuja%></li></h5>
+				<% if @sale.ganadorActual != nil %>
+					<h5><li>Ganador actual: <%=User.find(@sale.ganadorActual).name%></li></h5>
+				<%end%>
+			</ul>
+			<br><br>
+			<%= form_for [@week,@sale], :url => week_sales_path(@sale) do |f| %>
+				<div class="row mb-2 d-inline-flex">
+					<h5 class="col-3 offset-1"><%= f.label :precioPuja, "Tu puja", class: 'text-white'%></h5>
+					<div class="col-5">
+						<%= f.hidden_field :week_id, value:  @week.id %>
+						<%= f.number_field :precioPuja, class: 'form-control', min: "0",
+						required: true %>
+					</div>
+					<%= f.submit "Pujar", class: 'btn btn-primary col' %>
+				</div>
+			<%end%>
+			<% if notice %>
+				<div class="alert alert-secondary text-center text-white mb-3 alert-expand-lg bg-dark"><%= notice%> </div>
+			<% end %>
+			<br>
+			<% if Date.today == @sale.fechaFin %>
+				<div class= "text-center"><h5>Faltan <%= ((Time.new(@sale.fechaFin.year,@sale.fechaFin.mon,@sale.fechaFin.mday,23,59,59) - Time.now).to_i)/3600 %> horas para que finalice la subasta</h5></div>
+			<% else %>
+				<div class= "text-center"><h5>Faltan <%= (@sale.fechaFin - Date.today).to_i %> días para que finalice la subasta</h5></div>
+			<% end %>
+		</div>
+		<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", sales_path%></button>
+	</div>	
+</div> 

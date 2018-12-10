@@ -1,0 +1,91 @@
+<div class="container-fluid bg-dark pb-4">
+  <div class="text-center">
+    <h2 class="text-white mb-3">Subastas</h2>
+  </div>
+  <div class="row">
+    <table style="table", class="table table-dark">
+      <thead>
+        <tr>
+          <th width "80%"> Residencia</th>
+          <th width "80%"> Semana</th>
+          <th width "80%"> Precio Base</th>
+          <th width "80%"> Fecha de Inicio</th>
+          <th width "80%"> Fecha de Fin</th>
+          <th width "80%"> Acciones </th>
+          <th colspan="4"> </th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @entro= 1%>
+
+        <% if (current_user.user_type_id == 1)%>
+        <% @residences.each do |residence| %>
+          <% residence.weeks.each do |week| %>
+            <tr>
+            <% if (week.sale != nil) && ((week.sale.fechaInicio <= Date.today) || (week.sale.fechaFin >= Date.today)) %>
+              <td> <%= Residence.find(week.residence_id).title%> </td>
+              <td><%= week.period.strftime('%d/%m/%Y') %> </td>
+              <td><%= week.sale.precioBase %> </td>
+              <td><%= week.sale.fechaInicio %> </td>
+              <td><%= week.sale.fechaFin %> </td>
+
+              <% if (week.status_id != 2) && (week.sale.fechaInicio == Date.today)%>
+                  <td><%= link_to "Iniciar", edit_week_path(week), class: 'btn btn-primary'%> </td>
+
+              <% elsif (week.status_id == 2) && (week.sale.fechaFin == Date.today)%>
+                <td><%= link_to "Finalizar", edit_week_path(week), class: 'btn btn-danger'%> </td>
+
+              <%elsif (week.status_id == 2) && ((week.sale.fechaFin >= Date.today) || (week.sale.fechaInicio <= Date.today))%>
+                    <td><%= link_to "Ver subasta", edit_week_sales_path(week), class: 'btn btn-info btn-primary'%></td>
+              <% end %>
+            <% end %>
+
+            </tr>
+          <% end %>
+        <% end %>
+         <% elsif (current_user.user_type_id == 2)%>
+
+         <% @residences.each do |residence| %>
+          <% residence.weeks.each do |week| %>
+            <tr>
+            <%@inscrip=1%>
+            <% if (week.sale != nil)&& (week.status_id == 2) && ((week.sale.fechaFin >= Date.today) || (week.sale.fechaInicio <= Date.today))%>
+              <td> <%= Residence.find(week.residence_id).title%> </td>
+              <td><%= week.period %> </td>
+              <td><%= week.sale.precioBase %> </td>
+              <td><%= week.sale.fechaInicio %> </td>
+              <td><%= week.sale.fechaFin %> </td>
+              <% @entro=2 %>
+             <% current_user.inscriptions.each do |inscription| %>
+              <% if (inscription.week.id == week.id)%>
+                <td><%= link_to "Ver subasta", edit_week_sales_path(week), class: 'btn btn-info btn-primary'%></td>
+                <% @inscrip=2 %>
+              <% end %>
+             <% end %>
+               <%if (@inscrip==1) %>
+               <td><%= link_to "Participar", edit_week_sales_path(week), class: 'btn btn-primary'%></td>
+              <% end %>
+
+
+              <% elsif (@entro==1) %>
+               <h3 class="text-white mb-3">Actualmente no hay subastas activas</h3>
+                <% @entro=2 %>
+              <% end %>
+
+            </tr>
+          <% end %>
+        <% end %>
+        <% if (@entro==1) %>
+               <h3 class="text-white mb-3">Actualmente no hay subastas activas</h3>
+       <% end %>
+       <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <br><br><br>
+
+  <button class="btn btn-block btn-light col-4 offset-4 mt-3"> <%= link_to "Volver", root_path %>
+</button>
+
+</div>
