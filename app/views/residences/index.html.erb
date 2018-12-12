@@ -86,12 +86,22 @@
                 <%end%>
 
             <% elsif (current_user.user_type_id == 3) %>
-                <% if (w.status_id == 1)  %>
-                  <% if (current_user.credits > 0) %>
-                    <td><%= link_to "Inscribirse a subasta", new_week_inscriptions_path(w), class: 'btn btn-primary'%> </td>
+              <%@no_esta_inscrip=1%>
+              <% current_user.inscriptions.each do |inscrip| %>
+                    <% if (inscrip.week.period == w.period)%>
+                          <%@no_esta_inscrip=0%>
+                      <% end %>
+                <% end %>
+                <% if (w.status_id == 1) %>
+                  <% if (@no_esta_inscrip==1)%>
+                    <% if (current_user.credits > 0) %>
+                      <td><%= link_to "Inscribirse a subasta", new_week_inscriptions_path(w), class: 'btn btn-primary'%> </td>
+                      <% else %>
+                        <td> Sin créditos </td>
+                      <% end %>
                     <% else %>
-                      <td> Sin créditos </td>
-                    <% end %>  
+                    <td> Ya está inscripto </td>
+                    <% end %> 
                 <%elsif (w.status_id == 2) && ((w.sale.fechaFin >= Date.today) || (w.sale.fechaInicio <= Date.today))%>
                   <td>Subasta iniciada</td>
                 <% elsif (w.status_id == 3) %>
