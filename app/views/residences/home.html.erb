@@ -1,15 +1,18 @@
 
 <div class="container">
-
+<div class="text-white mb-3">
   <h1 style= font-type:"Dimitri";><center><B>Residencias en HotSale</b></center></h1>
-    <br>
+  </div>  <br>
+
+  <center><%= link_to "Listado completo de residencias", residences_path,class: 'btn btn-secondary btn-block'  %></center>
+  <br><br>
 <div class= 'thumbnails' id='semanas'>
   <div class="row">
   <% Week.all.order(:status_id).each do |week| %>
 <div id='semanas'>
 <div class="col">
         <%if (week.status_id ==1) %>
-        <%= link_to  Residence.find(week.residence_id).title, residence_path(week.residence_id)%>
+      <center>  <%= link_to  Residence.find(week.residence_id).title, residence_path(week.residence_id)%></center>
         <div class='thumbnail'>
           <img src="<%= Residence.find(week.residence_id).image %>"
              class="img-thumbnail  style_image shadow p-3  bg-secondary  "
@@ -17,7 +20,7 @@
 
           </a>
 </div>
-            </div>
+            </div><br>
             <%end%>
         </div>
   <%end%>
@@ -26,6 +29,5 @@
 </div>
 
 
-<center><%= link_to "Listado de residencias", residences_path,class: 'btn btn-outline-primary btn'  %></center>
 <br>
 </div>
