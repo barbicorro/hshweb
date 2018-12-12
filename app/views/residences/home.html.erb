@@ -1,11 +1,29 @@
-<div class="container-fluid bg-dark pb-4 ">
+
+<div class="container">
+
+  <h1 style= font-type:"Dimitri";><center><B>Residencias en HotSale</b></center></h1>
+    <br>
+<div class= 'thumbnails' id='semanas'>
+  <div class="row">
+  <% Week.all.order(:status_id).each do |week| %>
+<div id='semanas'>
+
+        <%if (week.status_id ==1) %>
+        <div class='thumbnail'>
+          <a href="<%residence_path(Residence.find(week.residence_id))%>"><img src="<%= Residence.find(week.residence_id).image %>"
+          alt="<%Residence.find(week.residence_id).title%>"   class="img-thumbnail style_image shadow p-3 mb-5 bg-secondary  d-block" height="300px" width="350 px">
+
+          </a>
+
+            </div>
+            <%end%>
+        </div>
+  <%end%>
+  </div>
+</div>
+</div>
 
 
-	<div class="text-center">
-	      <h2 class="text-white mb-3">Bienvenido a Home Switch Home</h2>
-	</div>
-	<div class="bg-dark"><br /></div>
-
-	<img src="http://www.todopaisajes.com/1920x1080/hotel-5-estrellas-en-la-playa.jpg" class="shadow p-3 mb-5 bg-secondary rounded col-10 offset-1" height="500px">
-	<br><br>
+<center><%= link_to "Listado de residencias", residences_path,class: 'btn btn-outline-primary btn'  %></center>
+<br>
 </div>

@@ -2,37 +2,44 @@ class UsersController < ApplicationController
   def change_admin
 
   @usuario= User.find(params[:user_id])
-  @usuario.user_type_id = 1
-  if @usuario.save
-    redirect_to users_path,notice: "el usuario ahora es un administrador"
-  else
-    redirect_to users_path, notice: "Error al modificar el tipo de usuario"
-  end
-
+  if(current_user.user_type_id==4)
+      @usuario.user_type_id = 1
+      if @usuario.save
+        redirect_to users_path,notice: "el usuario ahora es un administrador"
+      else
+        redirect_to users_path, notice: "Error al modificar el tipo de usuario"
+      end
+    else
+      redirect_to users_path, notice: "No contas con permiso para realizar esta accion"
+end
 end
 
 def change_base
-
-@usuario= User.find(params[:user_id])
-@usuario.user_type_id = 3
-if @usuario.save
-  redirect_to users_path,notice: "el usuario ha cambiado de membresia"
-else
-  redirect_to users_path, notice: "Error al cambiar la membresia"
-end
-
+    @usuario= User.find(params[:user_id])
+    @usuario.user_type_id = 3
+    if(current_user.user_type_id==4 || current_user.user_type_id ==1)
+        if @usuario.save
+          redirect_to users_path,notice: "el usuario ha cambiado de membresia"
+        else
+          redirect_to users_path, notice: "Error al cambiar la membresia"
+        end
+      else
+        redirect_to users_path, notice: "No contas con permiso para realizar esta accion"
+      end
 end
 
 def change_premium
-
-@usuario= User.find(params[:user_id])
-@usuario.user_type_id = 2
-if @usuario.save
-  redirect_to users_path,notice: "El usuario ha cambiado de membresia"
-else
-  redirect_to users_path, notice: "Error al cambiar la membresia"
-end
-
+    @usuario= User.find(params[:user_id])
+    @usuario.user_type_id = 2
+    if(current_user.user_type_id==4 || current_user.user_type_id ==1)
+          if @usuario.save
+            redirect_to users_path,notice: "El usuario ha cambiado de membresia"
+          else
+            redirect_to users_path, notice: "Error al cambiar la membresia"
+          end
+    else
+      redirect_to users_path, notice: "No contas con permiso para realizar esta accion"
+    end
 end
 
 
@@ -55,8 +62,7 @@ end
 	end
 
   def destroy
-    #a este entra cuando un usuario cancela su cuenta
-    byebug
+  
     if (current_user.user_type_id == 2 || current_user.user_type_id == 3)
       @usuario = current_user
       @week1 = @usuario.week1_id ? Week.find(@usuario.week1_id) : nil
