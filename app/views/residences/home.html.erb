@@ -7,14 +7,16 @@
   <div class="row">
   <% Week.all.order(:status_id).each do |week| %>
 <div id='semanas'>
-
+<div class="col">
         <%if (week.status_id ==1) %>
+        <%= link_to  Residence.find(week.residence_id).title, residence_path(week.residence_id)%>
         <div class='thumbnail'>
-          <a href="<%residence_path(Residence.find(week.residence_id))%>"><img src="<%= Residence.find(week.residence_id).image %>"
-          alt="<%Residence.find(week.residence_id).title%>"   class="img-thumbnail style_image shadow p-3 mb-5 bg-secondary  d-block" height="300px" width="350 px">
+          <img src="<%= Residence.find(week.residence_id).image %>"
+             class="img-thumbnail  style_image shadow p-3  bg-secondary  "
+           height="350px" width="350 px"><br>
 
           </a>
-
+</div>
             </div>
             <%end%>
         </div>
