@@ -10,7 +10,7 @@ class WeeksController < ApplicationController
 	      @week= Week.find(params[:week_id])
 	    else
 	      redirect_to new_user_session_path
-	    end	
+	    end
 	end
 
 	def update
@@ -67,11 +67,11 @@ class WeeksController < ApplicationController
 	     		@residence = Residence.find(@week.residence_id)
 	     	  	redirect_to residence_weeks_path(@residence) , notice: "Ha habido algún problema"
 	     	end
-	    end 	
+	    end
 	end
-	
+
 	def new
-		@residence = Residence.find(params[:residence_id])	
+		@residence = Residence.find(params[:residence_id])
 		@week = @residence.weeks.new
 	end
 
@@ -84,7 +84,7 @@ class WeeksController < ApplicationController
 	      @week= Week.find(params[:id])
 	    else
 	      redirect_to new_user_session_path
-	    end	
+	    end
 	end
 
 	def weekList

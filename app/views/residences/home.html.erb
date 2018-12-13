@@ -1,11 +1,33 @@
-<div class="container-fluid bg-dark pb-4 ">
+
+<div class="container">
+<div class="text-white mb-3">
+  <h1 style= font-type:"Dimitri";><center><B>Residencias en HotSale</b></center></h1>
+  </div>  <br>
+
+  <center><%= link_to "Listado completo de residencias", residences_path,class: 'btn btn-secondary btn-block'  %></center>
+  <br><br>
+<div class= 'thumbnails' id='semanas'>
+  <div class="row">
+  <% Week.all.order(:status_id).each do |week| %>
+<div id='semanas'>
+<div class="col">
+        <%if (week.status_id ==1) %>
+      <center>  <%= link_to  Residence.find(week.residence_id).title, residence_path(week.residence_id)%></center>
+        <div class='thumbnail'>
+          <img src="<%= Residence.find(week.residence_id).image %>"
+             class="img-thumbnail  style_image shadow p-3  bg-secondary  "
+           height="350px" width="350 px"><br>
+
+          </a>
+</div>
+            </div><br>
+            <%end%>
+        </div>
+  <%end%>
+  </div>
+</div>
+</div>
 
 
-	<div class="text-center">
-	      <h2 class="text-white mb-3">Bienvenido a Home Switch Home</h2>
-	</div>
-	<div class="bg-dark"><br /></div>
-
-	<img src="http://www.todopaisajes.com/1920x1080/hotel-5-estrellas-en-la-playa.jpg" class="shadow p-3 mb-5 bg-secondary rounded col-10 offset-1" height="500px">
-	<br><br>
+<br>
 </div>

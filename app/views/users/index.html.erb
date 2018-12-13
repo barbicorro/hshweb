@@ -32,7 +32,9 @@
                             <% elsif (usuario.user_type_id == 3)%>
                                 <td><%= link_to "Cambiar a Premium",user_change_premium_path(usuario), class: 'btn btn-info btn-warning'%> </td>
                             <%end%>
+                            <% if (current_user.user_type_id == 4) %>
                             <td><%= link_to "Hacer Administrador", user_change_admin_path(usuario), class: 'btn btn-info btn-secondary' %> </td>
+                              <%end%>
                       <%end%>
                   </tr>
                   <%end%>
