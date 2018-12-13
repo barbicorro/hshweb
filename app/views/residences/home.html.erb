@@ -11,8 +11,10 @@
   <div class="row">
 <tr>
   <%@resi = 0 %>
+
   <%  @ws= Week.all.where(status_id: 4)%>
   <% @ws.each do |week| %>
+
     <div id='semanas'>
         <%if (week.status_id ==4) && (@resi != week.residence_id) %>
           <div class="col">
