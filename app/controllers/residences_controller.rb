@@ -9,7 +9,7 @@ class ResidencesController < ApplicationController
   end
 
   def home
-    @ws= Week.all.where(status_id: 4)
+  @residences=Residence.all
 
   end
 
