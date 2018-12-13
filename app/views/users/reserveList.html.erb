@@ -23,7 +23,9 @@
               <td><%= @week1.period.strftime('%d/%m/%Y') %></td>
 
               <td class="text-center"><%= link_to "Ver residencia", residence_path(r1.id), class: 'btn btn-info btn-primary mr-2'%>
-              <%= link_to "Cancelar reserva", week_cancel_path(@week1), class: 'btn btn-info btn-danger'%>   
+              <% if (@week1.period < Date.today) %>
+                <%= link_to "Cancelar reserva", week_cancel_path(@week1), class: 'btn btn-info btn-danger'%>
+              <% end %>   
             </td>
             
             </tr>
@@ -43,7 +45,9 @@
             <td><%= @week2.period.strftime('%d/%m/%Y') %></td>
             
             <td class="text-center"><%= link_to "Ver residencia", residence_path(r2.id), class: 'btn btn-info btn-primary mr-2'%>
-              <%= link_to "Cancelar reserva", week_cancel_path(@week2), class: 'btn btn-info btn-danger'%>   
+            <% if (@week1.period < Date.today) %>
+              <%= link_to "Cancelar reserva", week_cancel_path(@week2), class: 'btn btn-info btn-danger'%> 
+            <% end %>  
             </td>
             
           </tr>
