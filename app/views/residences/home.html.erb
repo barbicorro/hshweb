@@ -1,33 +1,42 @@
 
 <div class="container">
-<div class="text-white mb-3">
-  <h1 style= font-type:"Dimitri";><center><B>Residencias en HotSale</b></center></h1>
-  </div>  <br>
+  <br>
+  <h1 class="text-white"><center><B>Bienvenido  </b></center></h1>
 
-  <center><%= link_to "Listado completo de residencias", residences_path,class: 'btn btn-secondary btn-block'  %></center>
-  <br><br>
+<%if(@ws.where(status_id: 4).count !=0)%>
+  <div class="text-white mb-3">
+    <h3 style= font-type:"Dimitri";><center><B>Residencias en HotSale</b></center></h3>
+    </div>  <br>
 <div class= 'thumbnails' id='semanas'>
   <div class="row">
-  <% Week.all.order(:status_id).each do |week| %>
-<div id='semanas'>
-<div class="col">
-        <%if (week.status_id ==1) %>
-      <center>  <%= link_to  Residence.find(week.residence_id).title, residence_path(week.residence_id)%></center>
-        <div class='thumbnail'>
-          <img src="<%= Residence.find(week.residence_id).image %>"
-             class="img-thumbnail  style_image shadow p-3  bg-secondary  "
-           height="350px" width="350 px"><br>
-
-          </a>
-</div>
-            </div><br>
-            <%end%>
+<tr>
+  <%@resi = 0 %>
+  <% @ws.each do |week| %>
+    <div id='semanas'>
+        <%if (week.status_id ==4) && (@resi != week.residence_id) %>
+          <div class="col">
+      <center> <h5> <%= link_to  Residence.find(week.residence_id).title, residence_path(week.residence_id)%></center></h5>
+              <div class='thumbnail'>
+                  <img src="<%= Residence.find(week.residence_id).image %>"
+                     class="img-thumbnail  style_image shadow p-3  bg-secondary  "
+                   height="300px" width="350px"><br>
+                  </a>
+                </div>
+            <br>
         </div>
+        <%end%>
+        <% @resi = week.residence_id %>
+    </div>
   <%end%>
+</tr>
   </div>
 </div>
-</div>
-
-
+<%else%>
+<div>
+  <img src="http://www.todopaisajes.com/1920x1080/hotel-5-estrellas-en-la-playa.jpg"
+   class="shadow p-3 mb-5 bg-secondary rounded col-10 offset-1" height="500px">
+ </div>
+<%end%>
 <br>
+
 </div>

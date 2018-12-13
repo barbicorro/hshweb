@@ -15,7 +15,7 @@
     <%= text_field_tag :term, params[:term], "data-provide" => 'datepicker', class: 'form-control mr-sm-2 offset-1', placeholder: "Elige la fecha", required: true%>
     </div>
     <%= submit_tag 'Buscar', name: nil, class: 'btn btn-outline-primary my-2 my-sm-0 offset-1' %>
-  <% end %> 
+  <% end %>
 
   <script type="text/javascript">
     $('#sandbox-container input').datepicker({
@@ -53,7 +53,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @residences.each do |residence| %>
+      <% @residences.order(:title).each do |residence| %>
         <tr>
           <td> <%= link_to residence.title, residence_path(residence)%> </td>
           <td><%= residence.country %> </td>
@@ -112,7 +112,7 @@
                       <% end %>
                     <% else %>
                     <td> Ya está inscripto </td>
-                    <% end %> 
+                    <% end %>
                 <%elsif (w.status_id == 2) && ((w.sale.fechaFin >= Date.today) || (w.sale.fechaInicio <= Date.today))%>
                   <td><%= w.sale.precioPuja %> </td>
                   <td>Subasta iniciada</td>
@@ -127,7 +127,7 @@
          <% elsif current_user.user_type_id == 1 || current_user.user_type_id == 4 %>
             <td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-primary'%> </td>
             <td><%= link_to "Borrar", residence, method: :delete, class: 'btn btn-info btn-danger',
-            data: { confirm: "¿Está seguro de que quiere eliminar la residencia?" } %> </td>  
+            data: { confirm: "¿Está seguro de que quiere eliminar la residencia?" } %> </td>
           <% end %>
         </tr>
         <% end %>

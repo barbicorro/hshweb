@@ -92,38 +92,20 @@
               <div class="form-group row">
 
                 <div class="col-4">
+                    <div class="form-group" >
 
-                        <select class="form-control" id="date_venc_month">
-                        <option>Enero</option>
-                        <option>Febrero</option>
-                        <option>Marzo</option>
-                        <option>Abril</option>
-                        <option>Mayo</option>
-                        <option>Junio</option>
-                        <option>Julio</option>
-                        <option>Agosto</option>
-                        <option>Septiembre</option>
-                        <option>Octubre</option>
-                        <option>Noviembre</option>
-                        <option>Diciembre</option>
+                     <%= f.select :date_venc_month, options_for_select(['Enero','Febrero','Marzo','Abril',
+                       'Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']),
+                     {include_blank: 'Mes '}, {class: 'form-control', required: true}%>
+                     </div>
 
-                      </select>
                     </div>
                     <div class="col-4">
-
-                            <select class="form-control" id="date_venc_year">
-
-                            <option>2019</option>
-                            <option>2020</option>
-                            <option>2021</option>
-                            <option>2022</option>
-                            <option>2023</option>
-                            <option>2024</option>
-                            <option>2025</option>
-                            <option>2026</option>
-                            <option>2027</option>
-
-                          </select>
+                      <div class="form-group" >
+                       <%= f.select :date_venc_year, options_for_select(['2019','2020','2021','2022',
+                         '2023','2024','2025','2026','2028']),
+                       {include_blank: 'Año '}, {class: 'form-control', required: true}%>
+                       </div>
                         </div>
             </div>
 
