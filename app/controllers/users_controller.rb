@@ -56,7 +56,6 @@ end
 
   def destroy
     #a este entra cuando un usuario cancela su cuenta
-    byebug
     if (current_user.user_type_id == 2 || current_user.user_type_id == 3)
       @usuario = current_user
       @week1 = @usuario.week1_id ? Week.find(@usuario.week1_id) : nil

@@ -1,0 +1,36 @@
+<div class="container-fluid bg-dark pb-4">
+<br>
+<% if (user_signed_in?) && ((current_user.user_type_id == 1) || (current_user.user_type_id == 4)) %>
+  <div class="text-center">
+    <h2 class="text-white mb-3">Mensajes</h2>
+  </div>
+  <div class="row">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Asunto</th>
+          <th>Contenido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @comunications.each do |c| %>
+          <tr>
+            <td><%= c.email %></td>
+            <td><%= c.subject %></td>
+            <td><%= link_to "Ver mensaje", comunication_path(c), class: 'btn btn-info btn-primary'%></td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn btn-block btn-light col-4 offset-4 mt-3"> <%= link_to "Volver", root_path %></button>
+<%else%>
+  <br><br><br>
+  <div class="text-white text-center mb-3"> <h3>No deberías estar aquí</h3> </div>
+  <br>
+  <button class="btn btn-block btn-light col-2 offset-5 mt-3"> <%= link_to "Volver", root_path %>
+</button>
+</div>
+<%end%>

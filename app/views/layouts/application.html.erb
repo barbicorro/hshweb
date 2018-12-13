@@ -43,11 +43,16 @@
         		<%= link_to "Ayuda", faq_path, class: "dropdown-item"%>
 		    <%end%> 
 		
-		    
         	<% if (user_signed_in?) && (current_user.user_type_id == 4) %>
         		<%= link_to "Usuarios Administradores",  user_indexAdmin_path(current_user.id), class: "dropdown-item"%> 
          	<%end%>
 
+
+         	<% if (user_signed_in?) && (current_user.user_type_id == 2 || current_user.user_type_id == 3) %>
+		   	 	<%= link_to "Contacto", new_comunication_path, class: "dropdown-item"%>
+		   	<% elsif (user_signed_in?) && (current_user.user_type_id == 1 || current_user.user_type_id == 4) %>
+		   	 	<%= link_to "Mensajes", comunications_path, class: "dropdown-item"%>
+		   	<%end%>
 
 	   	 	 	
       </div>

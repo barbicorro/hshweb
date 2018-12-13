@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181129135011) do
+ActiveRecord::Schema.define(version: 20181212235534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comunications", force: :cascade do |t|
+    t.string "email"
+    t.string "subject"
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "inscriptions", force: :cascade do |t|
     t.integer "week_id"

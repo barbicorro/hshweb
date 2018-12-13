@@ -1,0 +1,33 @@
+<br><br><br>
+<% if (user_signed_in?) && ((current_user.user_type_id == 2) || (current_user.user_type_id == 3)) %>
+	<div class="container-fluid bg-dark pb-4">
+		<div class="text-center">
+		 	<h2 class="text-white mb-3">Envíanos tu consulta</h2>
+		 	<h6 class="text-white mb-3"> Un administrador la responderá al e-mail indicado a la brevedad <h6>
+		</div>
+		<br>
+	  	<%= form_for @comunication do |f| %>
+			<div class="row col-6 offset-3">
+
+				<h5><%= f.label :email, "Email", class: 'text-white mb-1 '%></h5>
+				<%= f.text_field :email, class: 'form-control mb-5', value: current_user.email, :readonly => true, required: true%>
+
+				<h5><%= f.label :subject, "Asunto", class: 'text-white mb-1 '%></h5>
+				<%= f.text_field :subject, class: 'form-control mb-5', required: true %>
+
+	            <h5><%= f.label :message, "Mensaje", class: 'text-white mb-1 '%></h5>
+				<%= f.text_area :message, class: 'form-control mb-5', rows: "10",required: true %>
+				<div class="offset-9">
+					<%= f.submit "Enviar", class: 'btn btn-primary btn' %> 
+					<%= link_to "Cancelar", root_path,class: 'btn btn-outline-primary btn' %>
+				</div>
+		<% end %>
+		<br><br>
+	</div>
+<%else%>
+  <div class="text-white text-center mb-3"> <h3>No deberías estar aquí</h3> </div>
+  <br>
+  <button class="btn btn-block btn-light col-2 offset-5 mt-3"> <%= link_to "Volver", root_path %>
+</button>
+</div>
+<%end%>

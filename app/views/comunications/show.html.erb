@@ -1,0 +1,22 @@
+<br><br><br><br><br>
+<% if (user_signed_in?) && ((current_user.user_type_id == 1) || (current_user.user_type_id == 4)) %>
+	<div class="col-6 offset-3">
+		<div class="card">
+		  <div class="card-body">
+		    <h3 class="card-title"><%= @comunication.subject %></h3>
+		    <h6 class="card-subtitle mb-2 text-muted">Usuario: <%= @comunication.email%></h6>
+		    <p class="card-text">
+		      <%= m =  simple_format(@comunication.message) %>
+		    </p>
+		  </div>
+		</div>
+		<button class="btn btn-block btn-light col-4 offset-4 mt-3"> <%= link_to "Volver", comunications_path %></button>
+		<br><br><br>
+	</div>
+<%else%>
+  <div class="text-white text-center mb-3"> <h3>No deberías estar aquí</h3> </div>
+  <br>
+  <button class="btn btn-block btn-light col-2 offset-5 mt-3"> <%= link_to "Volver", root_path %>
+</button>
+</div>
+<%end%>
