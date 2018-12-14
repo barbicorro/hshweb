@@ -1,0 +1,23 @@
+<% if (user_signed_in?) && (current_user.user_type_id == 4)%>
+<div class="container-fluid bg-dark pb-4">
+	<div class="text-center"> 
+	      <h3 class="text-white mb-3"> Configurar precio de las membresías </h3>
+	</div>
+	<div class="container mb-5">
+		<%= form_for @price do |f| %>
+			<h5><%= f.label :base, "Establecer precio de la membresía Base", class: 'text-white mb-1 mt-2 '%></h5>
+					<%= f.number_field :base, class: 'form-control col-3 mb-5', min: "0", required: true  %>
+			<h5><%= f.label :premium, "Establecer precio de la membresía Premium", class: 'text-white mb-1 mt-2 '%></h5>
+					<%= f.number_field :premium, class: 'form-control col-3 mb-5', min: "0", required: true  %>
+<br><br>
+			<%= f.submit "Guardar", class: 'btn btn-primary col-1' %>
+		<%end%>
+	</div>
+	<button class="btn btn-light offset-1"><%= link_to "Cancelar", root_path%></button>
+<% else %>
+<div class='text-white mb-3 text-center'>
+  <h3> Upss...No puedes estar aqui, mejor regresa </h3>
+  </div>
+
+<button class="btn btn-lg btn-block btn-white col-2 offset-5 mt-3"><%= link_to "Volver", :back %></button>
+<%end%>

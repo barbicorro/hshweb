@@ -38,3 +38,5 @@ status1=Status.create({name: 'enEspera'})
 status2=Status.create({name: 'EnSubasta'})
 status3=Status.create({name: 'Reservada'})
 status4=Status.create({name: 'EnHotSale'})
+
+precioMem=Price.create({premium:'0',base:'0'})
