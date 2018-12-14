@@ -1,8 +1,9 @@
+<% if (user_signed_in?) %>
 <div class="container-fluid bg-dark pb-4">
 	<br><br><br><br><br><br><br><br>
 	<div class="container mb-5">
 	<% if current_user.user_type_id == 1 || current_user.user_type_id == 4 %>
-		<% if (@week.status_id == 1 && @week.sale == nil)%>
+		<% if (@week.status_id == 1 && @week.sale != nil)%>
 			<h3 class="text-white mb-3">La semana <b><%= @week.period.strftime('%d/%m/%Y') %></b> será puesta en subasta por 3 días a partir de hoy</h3> 
 			<%= form_for @week do |f|%>
 				<div class "form-group">
@@ -88,3 +89,10 @@
 	<% end %>
 	</div>
 </div>
+<% else %>
+<div class='text-white mb-3 text-center'>
+  <h3> Upss...No puedes estar aqui, mejor regresa </h3>
+  </div>
+
+<button class="btn btn-lg btn-block btn-white col-2 offset-5 mt-3"><%= link_to "Volver", :back %></button>
+<%end%>

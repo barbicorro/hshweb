@@ -1,3 +1,4 @@
+<% if (user_signed_in?) %>
 <div class="container-fluid bg-dark pb-4">
 	<div class="text-center"> 
 		<h2 class="text-white mb-3">Subasta de la semana <%=@week.period.strftime('%d-%m-%Y')%></h2>
@@ -49,3 +50,10 @@
 		<button class="btn btn-lg btn-block btn-white col-4 offset-4 mt-3"><%= link_to "Volver", sales_path%></button>
 	</div>	
 </div> 
+<% else%>
+<div class='text-white mb-3 text-center'>
+  <h3> Upss...No puedes estar aqui, mejor regresa </h3>
+  </div>
+
+<button class="btn btn-lg btn-block btn-white col-2 offset-5 mt-3"><%= link_to "Volver", :back %></button>
+<%end%>
