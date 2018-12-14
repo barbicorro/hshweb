@@ -32,6 +32,6 @@ Rails.application.routes.draw do
     get 'faq', to: 'residences#faq', as: :faq
 
     resources :comunications
-
+    resources :prices
 
 end
