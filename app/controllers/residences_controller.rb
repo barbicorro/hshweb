@@ -28,6 +28,8 @@ class ResidencesController < ApplicationController
   def update
     @residence = Residence.find(params[:id])
     if @residence.update(residence_params)
+        @residence.priceHotSale = (35*(@residence.price))/100
+        @residence.save
        redirect_to residences_path , notice: "La residencia fue modificada exitosamente"
      else
        render :edit
@@ -40,6 +42,8 @@ class ResidencesController < ApplicationController
         (1..52).each do |i|
           @week = Week.create({period: Date.commercial(2019, i,1), status_id: 1, residence_id: @residence.id})  
         end
+        @residence.priceHotSale = (35*(@residence.price))/100
+        @residence.save
         redirect_to residences_path , notice: 'La residencia fue publicada exitosamente'
      else
         redirect_to new_residence_path , notice: 'La residencia ya existe'
@@ -56,7 +60,7 @@ class ResidencesController < ApplicationController
 	end
 
   def residence_params
-    params.require(:residence).permit(:title,:address,:description,:country,:province,:locality,:image,:term1,:term)
+    params.require(:residence).permit(:title,:address,:description,:price,:country,:province,:locality,:image,:term1,:term)
   end
 
 end
