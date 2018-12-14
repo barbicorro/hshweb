@@ -5,6 +5,7 @@ class PricesController < ApplicationController
 
 	def index
 		@prices = Price.all
+		@price=Price.find(1)
 	end
 
 	def edit
