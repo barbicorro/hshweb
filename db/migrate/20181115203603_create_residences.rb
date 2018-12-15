@@ -8,7 +8,8 @@ class CreateResidences < ActiveRecord::Migration[5.1]
       t.string :province
       t.string :locality
       t.string :image
-
+      t.integer :price
+      t.integer :priceHotSale
       t.timestamps
     end
   end

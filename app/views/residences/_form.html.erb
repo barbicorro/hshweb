@@ -11,9 +11,13 @@
 
 
 			<div class="form-group row">
-				<div class="col-8">
+				<div class="col-5">
 					<h5><%= f.label :description, "Descripción", class: 'text-white mb-1 '%></h5>
 					<%= f.text_area :description, class: 'form-control mb-3', placeholder: "Ingrese una descripcion de la residencia",required: true %>
+				</div>
+				<div class="col-3">
+					<h5><%= f.label :price, "Precio", class: 'text-white mb-1 '%></h5>
+					<%= f.number_field :price, class: 'form-control mb-3', placeholder: "Precio por semana", min: 0, required: true %>
 				</div>
 				<div class="col-4">	
 					<h5><%= f.label :image ,"URL de la imagen",class: 'text-white mb-1'%></h5>  

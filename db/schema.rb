@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20181213125716) do
     t.string "province"
     t.string "locality"
     t.string "image"
+    t.integer "price"
+    t.integer "priceHotSale"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

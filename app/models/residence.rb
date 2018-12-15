@@ -7,6 +7,7 @@ class Residence < ApplicationRecord
 	validates :country, presence:true
 	validates :province, presence:true
 	validates :locality, presence:true
+	validates :price, presence:true
 
 	def self.search(params)
 	  if (params[:term1] && params[:term])
