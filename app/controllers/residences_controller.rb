@@ -9,7 +9,8 @@ class ResidencesController < ApplicationController
   end
 
   def home
-    @residences = Residence.all
+    @ws= Week.all.where(status_id: 4)
+
   end
 
   def new
@@ -40,7 +41,7 @@ class ResidencesController < ApplicationController
     @residence =Residence.new(residence_params)
      if @residence.save
         (1..52).each do |i|
-          @week = Week.create({period: Date.commercial(2019, i,1), status_id: 1, residence_id: @residence.id})  
+          @week = Week.create({period: Date.commercial(2019, i,1), status_id: 1, residence_id: @residence.id})
         end
         @residence.priceHotSale = @residence.price-((35*(@residence.price))/100)
         @residence.save
@@ -49,12 +50,12 @@ class ResidencesController < ApplicationController
         redirect_to new_residence_path , notice: 'La residencia ya existe'
      end
    end
-   
+
 	def destroy
 	  @residence = Residence.find(params[:id])
     if @residence.destroy
       redirect_to residences_path,notice: "La residencia se elimino exitosamente"
-    else 
+    else
       redirect_to residences_path,notice: "Error al eliminar la residencia"
     end
 	end

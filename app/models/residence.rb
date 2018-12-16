@@ -1,5 +1,5 @@
 class Residence < ApplicationRecord
-	default_scope -> { order("title") }
+	
 	has_many :weeks
 	validates :title, presence:true, uniqueness:true
 	validates :address, presence:true
@@ -18,4 +18,3 @@ class Residence < ApplicationRecord
 	  end
 	end
 end
-

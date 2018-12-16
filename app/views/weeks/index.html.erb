@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <%@algun_hotsale=0%>
-          <% @residence.weeks.each do |week| %>
+          <% @residence.weeks.order(:period).each do |week| %>
             <tr>
              <% if (current_user.user_type_id == 1 || current_user.user_type_id == 4)%>
                 <td><%= week.period.strftime('%d/%m/%Y') %> </td>

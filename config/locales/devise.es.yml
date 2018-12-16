@@ -4,7 +4,8 @@ es:
   activerecord:
     attributes:
       user:
-        
+        date_venc_month: Mes de vencimiento de tarjeta
+        date_venc_year: Año de vencimiento de tarjeta
         name: Nombre
         lastname: Apellido
         cod: Codigo
