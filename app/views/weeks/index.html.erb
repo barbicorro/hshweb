@@ -15,6 +15,7 @@
         </tr>
       </thead>
       <tbody>
+      <%@algun_hotsale=0%>
           <% @residence.weeks.each do |week| %>
             <tr>
              <% if (current_user.user_type_id == 1 || current_user.user_type_id == 4)%>
@@ -31,11 +32,16 @@
                   <% end %>
 
               <% elsif (week.status_id == 4)%>
+                <%@algun_hotsale=1%>
                 <td><%= week.period.strftime('%d/%m/%Y') %> </td>
                 <td><%= Status.find(week.status_id).name %> </td>
+                <td>$<%= @residence.priceHotSale%> </td>
                 <td><%= link_to "Reservar", edit_week_path(week), class: 'btn btn-primary'%></td>
               <% end %>
             </tr>
+          <% end %>
+          <%if ((current_user.user_type_id == 2 || current_user.user_type_id == 3) && @algun_hotsale==0)%>
+             <h3 class="text-white mb-3">Actualmente no hay semanas en HotSale para esta residencia</h3>
           <% end %>
       </tbody>
     </table>
